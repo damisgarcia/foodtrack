@@ -8,14 +8,23 @@
       </div>
     </div>
     <div class="row stores">
-      <img src="images/app-store-icon.png" width="200">
-      <img src="images/google-play-icon.png" width="200">
+      <img src="images/app-store-icon.png" class="pull-right" width="200">
+      <img src="images/google-play-icon.png" class="pull-right" width="200">
     </div>
   </div>
   <div class="video-container">
     <iframe width="1380" height="800" src="https://www.youtube.com/embed/GNuLBtesbzA?rel=0&amp;controls=0&amp;showinfo=0;autoplay=1" frameborder="0" frameborder="0" allowfullscreen></iframe>
   </div>
 </div>
+
+<div class="row last-posts">
+  <div class="col col-md-4" ng-repeat="grid in posts.grids">
+    <div class="col col-md-12" ng-repeat="post in grid.objects">
+      <img src="{{post.images[0].source}}" class="img-responsive"/>
+    </div>
+  </div>
+</div>
+
 <div class="container">
   <div class="jumbotron">
     <p class="lead">
