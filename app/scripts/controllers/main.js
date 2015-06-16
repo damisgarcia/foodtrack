@@ -22,23 +22,25 @@ angular.module('foodtrackwebApp')
 
     $scope.fanpages = [
       {id:"244576275632539",posts:[]},
-      {id:"1491757611043874",posts:[]},
-      {id:"232223216969714",posts:[]}
+      {id:"1491757611043874",posts:[]}
     ]
 
     $scope.posts = {
       grids:[
-        { objects:[] },{objects:[]},{ objects:[] }
+        { objects:[], likes:0 },{objects:[], likes:0},{ objects:[], likes:0 }
       ]
     }
-    var count = 0;
+
+    var count = 0
+    var minLikes = 2
+
     // Requisitando últimas postagens
     angular.forEach($scope.fanpages,function(fanpage,index,_array){
-      Facebook.getPostsFanPage(fanpage.id,15,function(result, status, headers, config) {
+      Facebook.getPostsFanPage(fanpage.id,50,function(result, status, headers, config) {
         angular.forEach(result.data,function(post,index,_array){
           Facebook.getImageFromPost(post.object_id,function(object, status, headers, config){
             // Populando e Randomizando a View
-            if(object.images != undefined)
+            if(object.images != undefined && object.likes.data.length > minLikes)
               $scope.posts.grids[count].objects.push(object)
               count == 2 ? count = 0 : count++
               $scope.$apply() //update view
@@ -47,7 +49,6 @@ angular.module('foodtrackwebApp')
                   $scope.posts.grids[index] = shuffle(grid)
                 })
               }
-
           });
         });
       });

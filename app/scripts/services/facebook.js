@@ -14,7 +14,7 @@ angular.module('foodtrackwebApp')
       var self = {}
       // Service logic
       var domain = "https://graph.facebook.com/"
-      var version = "v2.3/"
+      var version = "v2.1/"
       var accessToken = "494196217405022|o40ok_IbWRmbn40eLOowbeVaqSw"
 
       self.getPostsFanPage = function (FanPageId,limit,callback) {
@@ -33,6 +33,13 @@ angular.module('foodtrackwebApp')
           .error(HttpException)
         }
       }
+
+      self.getTotalLikesFromPost = function (objectID,callback) {
+        $http.get( domain + version + objectID + "likes" + "?" + "access_token=" + accessToken )
+        .success(callback)
+        .error(HttpException)
+      }
+
       // private
       function HttpException(data, status, headers, config){
         return { error:data, status: status }
