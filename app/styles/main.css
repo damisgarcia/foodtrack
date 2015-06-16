@@ -6,6 +6,7 @@
 }
 
 body {
+  min-width: 960px;
   padding: 0;
 }
 
@@ -80,4 +81,55 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+
+/* Media */
+.video-wrap{
+  position: relative;
+  overflow: hidden;
+  margin: auto;
+  max-height: 600px;
+}
+.video-wrap .video-hero{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  color: white;
+}
+.video-wrap .video-hero h1{
+  font-size: 3em;
+}
+.video-wrap .video-hero h3{
+  font-size: 1.4em;
+}
+.video-wrap .stores{
+  position:absolute;
+  bottom:0;
+}
+.video-wrap .stores img:first-child{
+  margin-right: -30px;
+}
+.video-wrap .video-container{
+    position: relative;
+    overflow: hidden;
+    height: 0;
+    padding-top: 30px;
+    padding-bottom: 56.25%;
+    filter: blur(6px);
+}
+
+.video-container iframe{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }

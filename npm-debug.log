@@ -1,0 +1,161 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'install' ]
+2 info using npm@2.5.1
+3 info using node@v0.12.0
+4 verbose install where, deps [ '/home/damis/project/foodtrack',
+4 verbose install   [ 'grunt',
+4 verbose install     'grunt-autoprefixer',
+4 verbose install     'grunt-concurrent',
+4 verbose install     'grunt-contrib-clean',
+4 verbose install     'grunt-contrib-concat',
+4 verbose install     'grunt-contrib-connect',
+4 verbose install     'grunt-contrib-copy',
+4 verbose install     'grunt-contrib-cssmin',
+4 verbose install     'grunt-contrib-htmlmin',
+4 verbose install     'grunt-contrib-imagemin',
+4 verbose install     'grunt-contrib-jshint',
+4 verbose install     'grunt-contrib-uglify',
+4 verbose install     'grunt-contrib-watch',
+4 verbose install     'grunt-filerev',
+4 verbose install     'grunt-google-cdn',
+4 verbose install     'grunt-karma',
+4 verbose install     'grunt-newer',
+4 verbose install     'grunt-ng-annotate',
+4 verbose install     'grunt-svgmin',
+4 verbose install     'grunt-usemin',
+4 verbose install     'grunt-wiredep',
+4 verbose install     'jshint-stylish',
+4 verbose install     'karma-jasmine',
+4 verbose install     'karma-phantomjs-launcher',
+4 verbose install     'load-grunt-tasks',
+4 verbose install     'time-grunt' ] ]
+5 verbose install where, peers [ '/home/damis/project/foodtrack', [] ]
+6 info preinstall foodtrackweb@0.0.0
+7 verbose already installed skipping grunt-contrib-watch@^0.6.1 /home/damis/project/foodtrack
+8 verbose already installed skipping grunt-filerev@^2.1.2 /home/damis/project/foodtrack
+9 verbose already installed skipping grunt-google-cdn@^0.4.3 /home/damis/project/foodtrack
+10 verbose already installed skipping grunt-karma@* /home/damis/project/foodtrack
+11 verbose already installed skipping grunt-newer@^1.1.0 /home/damis/project/foodtrack
+12 verbose already installed skipping grunt-ng-annotate@^0.9.2 /home/damis/project/foodtrack
+13 verbose already installed skipping grunt-svgmin@^2.0.0 /home/damis/project/foodtrack
+14 verbose already installed skipping grunt-usemin@^3.0.0 /home/damis/project/foodtrack
+15 verbose already installed skipping grunt-wiredep@^2.0.0 /home/damis/project/foodtrack
+16 verbose already installed skipping jshint-stylish@^1.0.0 /home/damis/project/foodtrack
+17 verbose already installed skipping karma-jasmine@* /home/damis/project/foodtrack
+18 verbose already installed skipping karma-phantomjs-launcher@* /home/damis/project/foodtrack
+19 verbose already installed skipping load-grunt-tasks@^3.1.0 /home/damis/project/foodtrack
+20 verbose already installed skipping time-grunt@^1.0.0 /home/damis/project/foodtrack
+21 verbose already installed skipping grunt@^0.4.5 /home/damis/project/foodtrack
+22 verbose already installed skipping grunt-autoprefixer@^2.0.0 /home/damis/project/foodtrack
+23 verbose already installed skipping grunt-concurrent@^1.0.0 /home/damis/project/foodtrack
+24 verbose already installed skipping grunt-contrib-clean@^0.6.0 /home/damis/project/foodtrack
+25 verbose already installed skipping grunt-contrib-concat@^0.5.0 /home/damis/project/foodtrack
+26 verbose already installed skipping grunt-contrib-connect@^0.9.0 /home/damis/project/foodtrack
+27 verbose already installed skipping grunt-contrib-copy@^0.7.0 /home/damis/project/foodtrack
+28 verbose already installed skipping grunt-contrib-cssmin@^0.12.0 /home/damis/project/foodtrack
+29 verbose already installed skipping grunt-contrib-htmlmin@^0.4.0 /home/damis/project/foodtrack
+30 verbose already installed skipping grunt-contrib-imagemin@^0.9.2 /home/damis/project/foodtrack
+31 verbose already installed skipping grunt-contrib-jshint@^0.11.0 /home/damis/project/foodtrack
+32 verbose already installed skipping grunt-contrib-uglify@^0.7.0 /home/damis/project/foodtrack
+33 silly install resolved []
+34 info build /home/damis/project/foodtrack
+35 verbose linkStuff [ false, false, false, '/home/damis/project' ]
+36 info linkStuff foodtrackweb@0.0.0
+37 verbose linkBins foodtrackweb@0.0.0
+38 verbose linkMans foodtrackweb@0.0.0
+39 verbose rebuildBundles foodtrackweb@0.0.0
+40 verbose rebuildBundles [ '.bin',
+40 verbose rebuildBundles   'grunt',
+40 verbose rebuildBundles   'grunt-autoprefixer',
+40 verbose rebuildBundles   'grunt-concurrent',
+40 verbose rebuildBundles   'grunt-contrib-clean',
+40 verbose rebuildBundles   'grunt-contrib-concat',
+40 verbose rebuildBundles   'grunt-contrib-connect',
+40 verbose rebuildBundles   'grunt-contrib-copy',
+40 verbose rebuildBundles   'grunt-contrib-cssmin',
+40 verbose rebuildBundles   'grunt-contrib-htmlmin',
+40 verbose rebuildBundles   'grunt-contrib-imagemin',
+40 verbose rebuildBundles   'grunt-contrib-jshint',
+40 verbose rebuildBundles   'grunt-contrib-uglify',
+40 verbose rebuildBundles   'grunt-contrib-watch',
+40 verbose rebuildBundles   'grunt-filerev',
+40 verbose rebuildBundles   'grunt-google-cdn',
+40 verbose rebuildBundles   'grunt-karma',
+40 verbose rebuildBundles   'grunt-newer',
+40 verbose rebuildBundles   'grunt-ng-annotate',
+40 verbose rebuildBundles   'grunt-svgmin',
+40 verbose rebuildBundles   'grunt-usemin',
+40 verbose rebuildBundles   'grunt-wiredep',
+40 verbose rebuildBundles   'jasmine-core',
+40 verbose rebuildBundles   'jshint-stylish',
+40 verbose rebuildBundles   'karma',
+40 verbose rebuildBundles   'karma-jasmine',
+40 verbose rebuildBundles   'karma-phantomjs-launcher',
+40 verbose rebuildBundles   'load-grunt-tasks',
+40 verbose rebuildBundles   'phantomjs',
+40 verbose rebuildBundles   'time-grunt' ]
+41 verbose rebuild bundle /home/damis/project/foodtrack/node_modules/jasmine-core
+42 info build /home/damis/project/foodtrack/node_modules/jasmine-core
+43 info preinstall jasmine-core@2.3.4
+44 verbose linkStuff [ false,
+44 verbose linkStuff   false,
+44 verbose linkStuff   false,
+44 verbose linkStuff   '/home/damis/project/foodtrack/node_modules' ]
+45 info linkStuff jasmine-core@2.3.4
+46 verbose linkBins jasmine-core@2.3.4
+47 verbose linkMans jasmine-core@2.3.4
+48 verbose rebuildBundles jasmine-core@2.3.4
+49 info install jasmine-core@2.3.4
+50 info postinstall jasmine-core@2.3.4
+51 verbose rebuild bundle /home/damis/project/foodtrack/node_modules/karma
+52 info build /home/damis/project/foodtrack/node_modules/karma
+53 info preinstall karma@0.12.36
+54 verbose linkStuff [ false,
+54 verbose linkStuff   false,
+54 verbose linkStuff   false,
+54 verbose linkStuff   '/home/damis/project/foodtrack/node_modules' ]
+55 info linkStuff karma@0.12.36
+56 verbose linkBins karma@0.12.36
+57 verbose link bins [ { karma: './bin/karma' },
+57 verbose link bins   '/home/damis/project/foodtrack/node_modules/.bin',
+57 verbose link bins   false ]
+58 verbose linkMans karma@0.12.36
+59 verbose rebuildBundles karma@0.12.36
+60 verbose rebuildBundles [ '.bin',
+60 verbose rebuildBundles   'chokidar',
+60 verbose rebuildBundles   'colors',
+60 verbose rebuildBundles   'connect',
+60 verbose rebuildBundles   'di',
+60 verbose rebuildBundles   'glob',
+60 verbose rebuildBundles   'graceful-fs',
+60 verbose rebuildBundles   'http-proxy',
+60 verbose rebuildBundles   'lodash',
+60 verbose rebuildBundles   'log4js',
+60 verbose rebuildBundles   'mime',
+60 verbose rebuildBundles   'minimatch',
+60 verbose rebuildBundles   'optimist',
+60 verbose rebuildBundles   'q',
+60 verbose rebuildBundles   'rimraf',
+60 verbose rebuildBundles   'socket.io',
+60 verbose rebuildBundles   'source-map',
+60 verbose rebuildBundles   'useragent' ]
+61 verbose gentlyRm vacuuming /home/damis/project/foodtrack/node_modules/.bin/karma
+62 silly gentlyRm purging /home/damis/project/foodtrack/node_modules/.bin/karma
+63 verbose stack Error: EACCES, unlink '/home/damis/project/foodtrack/node_modules/.bin/karma'
+63 verbose stack     at Error (native)
+64 verbose cwd /home/damis/project/foodtrack
+65 error Linux 3.19.0-20-generic
+66 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install"
+67 error node v0.12.0
+68 error npm  v2.5.1
+69 error path /home/damis/project/foodtrack/node_modules/.bin/karma
+70 error code EACCES
+71 error errno -13
+72 error Error: EACCES, unlink '/home/damis/project/foodtrack/node_modules/.bin/karma'
+72 error     at Error (native)
+72 error  { [Error: EACCES, unlink '/home/damis/project/foodtrack/node_modules/.bin/karma']
+72 error   errno: -13,
+72 error   code: 'EACCES',
+72 error   path: '/home/damis/project/foodtrack/node_modules/.bin/karma' }
+73 error Please try running this command again as root/Administrator.
+74 verbose exit [ -13, true ]
