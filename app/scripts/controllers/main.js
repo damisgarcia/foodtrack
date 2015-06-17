@@ -18,11 +18,24 @@ angular.module('foodtrackwebApp')
     // Fan Pages
     // BrasilFoodTrucks:"244576275632539"
     // GuiaFoodTrucks:"1491757611043874"
-    // FoodTruckNasRuas:"232223216969714"
+    // Dindin do Brilho 243727072484890
+    // Coktelitas Drinks E Cocktails 263020680391340
+    // Coktelitas Seu Pudim 1709247265967710
+    // Citron Patisserie 1511651809096678
+    // Pão do Mar Food Truck 385669251635735
+    // Rapadura Food Truck 1509473082664327
+    //  General Chicken 392524240927564
 
     $scope.fanpages = [
       {id:"244576275632539",posts:[]},
-      {id:"1491757611043874",posts:[]}
+      {id:"1491757611043874",posts:[]},
+      {id:"243727072484890",posts:[]},
+      {id:"263020680391340",posts:[]},
+      {id:"1709247265967710",posts:[]},
+      {id:"1511651809096678",posts:[]},
+      {id:"385669251635735",posts:[]},
+      {id:"1509473082664327",posts:[]},
+      {id:"392524240927564",posts:[]}
     ]
 
     $scope.posts = {
@@ -36,14 +49,16 @@ angular.module('foodtrackwebApp')
 
     // Requisitando últimas postagens
     angular.forEach($scope.fanpages,function(fanpage,index,_array){
-      Facebook.getPostsFanPage(fanpage.id,50,function(result, status, headers, config) {
+      Facebook.getPostsFanPage(fanpage.id,15,function(result, status, headers, config) {
         angular.forEach(result.data,function(post,index,_array){
           Facebook.getImageFromPost(post.object_id,function(object, status, headers, config){
             // Populando e Randomizando a View
             if(object.images != undefined && object.likes.data.length > minLikes)
               $scope.posts.grids[count].objects.push(object)
               count == 2 ? count = 0 : count++
-              $scope.$apply() //update view
+              if(!$scope.$$phase) {
+                $scope.$apply() //update view
+              }
               if(index == (_array.length - 1)){
                 angular.forEach($scope.posts.grids,function(grid,index){
                   $scope.posts.grids[index] = shuffle(grid)

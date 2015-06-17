@@ -16,11 +16,34 @@
     <iframe width="1380" height="800" src="https://www.youtube.com/embed/GNuLBtesbzA?rel=0&amp;controls=0&amp;showinfo=0;autoplay=1" frameborder="0" frameborder="0" allowfullscreen></iframe>
   </div>
 </div>
+<div class="last-posts-wrap">
+  <div class="row last-posts">
+    <div class="col col-md-4" ng-repeat="grid in posts.grids">
+      <div class="col col-md-12" ng-repeat="post in grid.objects" on-finish-render="ngRepeatFinished">
+        <img src="{{post.images[0].source}}" class="img-responsive"/>
+        <div class="content">
+          <span class="divider"></span>
+          <div class="row">
+            <div class="col-md-offeset-3 col-md-9">
+              <h4>
+                {{post.from.name}} <br>
+                <small>{{post.updated_time | date:'medium'}}</small>
+              </h4>
+              <h5></h5>
+            </div>
+            <span class="stripe"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<div class="row last-posts">
-  <div class="col col-md-4" ng-repeat="grid in posts.grids">
-    <div class="col col-md-12" ng-repeat="post in grid.objects">
-      <img src="{{post.images[0].source}}" class="img-responsive"/>
+  <div class="last-posts-controls" ng-controller="PostsControlsCtrl">
+    <div class="pull-right">
+      <div class="btn-group" role="group" aria-label="...">
+        <button class="btn" ng-mousedown="move('-')" ng-mouseup="clear()" ng-mouseleave="clear()">Up</button>
+        <button class="btn" ng-mousedown="move('+')" ng-mouseup="clear()" ng-mouseleave="clear()">Down</button>
+      </div>
     </div>
   </div>
 </div>

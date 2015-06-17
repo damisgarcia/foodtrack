@@ -19,6 +19,8 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    
+    <!-- FACEBOOK -->
     <script>
       window.fbAsyncInit = function() {
         FB.init({
@@ -50,7 +52,6 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/">foodtrackweb</a>
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
@@ -60,6 +61,7 @@
               <li><a ng-href="#/about">About</a></li>
               <li><a ng-href="#/">Contact</a></li>
             </ul>
+            <button type="submit" class="btn btn-primary navbar-btn pull-right">Minha Conta</button>
           </div>
         </div>
       </div>
@@ -106,6 +108,8 @@
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/services/facebook.js"></script>
+        <script src="scripts/controllers/postscontrols.js"></script>
+        <script src="scripts/directives/onfinishrender.js"></script>
         <!-- endbuild -->
 </body>
 </html>
