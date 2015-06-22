@@ -3,8 +3,6 @@
     <div class="container">
       <div class="row">
         <h1 class="text-center">"Lorem ipsum dolor sit amet, consectetur adipisicing elit"</h1>
-        <h3 class="pull-left">503 Trucks Cadastrados </h3>
-        <h3 class="pull-right">10,321 Opções de Pratos</h3>
       </div>
     </div>
     <div class="row stores">
@@ -13,46 +11,64 @@
     </div>
   </div>
   <div class="video-container">
-    <iframe width="1380" height="800" src="https://www.youtube.com/embed/GNuLBtesbzA?rel=0&amp;controls=0&amp;showinfo=0;autoplay=1" frameborder="0" frameborder="0" allowfullscreen></iframe>
+    <video autoplay="" preload="metadata" width="1380" height="800" loop="true" muted="true">
+      <source src="videos/food_on_wheels_sm.mp4" type="video/mp4"/>
+      <source src="videos/food_on_wheels_sm.webm" type="video/webm"/>
+    </video>
   </div>
 </div>
 <div class="last-posts-wrap">
   <div class="row last-posts">
     <div class="col col-md-4" ng-repeat="grid in posts.grids">
-      <div class="col col-md-12" ng-repeat="post in grid.objects" on-finish-render="ngRepeatFinished">
+      <div class="animated fadeIn col col-md-12" ng-repeat="post in grid.objects | limitTo:2" on-finish-render="ngRepeatFinished">
         <img src="{{post.images[0].source}}" class="img-responsive"/>
-        <div class="content">
-          <span class="divider"></span>
-          <div class="row">
-            <div class="col-md-offeset-3 col-md-9">
-              <h4>
-                {{post.from.name}} <br>
-                <small>{{post.updated_time | date:'medium'}}</small>
-              </h4>
-              <h5></h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="last-posts-filter" ng-click="showTreadingTopicsModal()">
+    <h1>Trending Topics Foodtrooper.</h1>
+    <p class="text-right">O que é destaque jamais fica esquecido no Cosmos - Clique aqui vejá o que está acontecendo agora na cidade</p>
+  </div>
+
+  <!-- Thread Topics -->
+  <div class="modal animated" id="treadingTopicsModal" ng-class="isModalEnable ? 'fadeIn' : 'fadeOut' " tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row last-posts">
+            <div class="col col-md-4" ng-repeat="grid in posts.grids">
+              <div class="animated fadeIn col col-md-12" ng-repeat="post in grid.objects" on-finish-render="ngRepeatFinished">
+                <img src="{{post.images[0].source}}" class="img-responsive"/>
+                <div class="content">
+                  <span class="divider"></span>
+                  <div class="row">
+                    <div class="col-md-offeset-3 col-md-9">
+                      <h4>
+                        {{post.from.name}} <br>
+                        <small>{{post.updated_time | date:'medium'}}</small>
+                      </h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <span class="stripe"></span>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  <div class="last-posts-controls" ng-controller="PostsControlsCtrl">
-    <div class="pull-right">
-      <div class="btn-group" role="group" aria-label="...">
-        <button class="btn" ng-mousedown="move('-')" ng-mouseup="clear()" ng-mouseleave="clear()">Up</button>
-        <button class="btn" ng-mousedown="move('+')" ng-mouseup="clear()" ng-mouseleave="clear()">Down</button>
-      </div>
-    </div>
-  </div>
 </div>
-
+<br>
 <div class="container">
   <div class="jumbotron">
     <p class="lead">
       <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-      Always a pleasure scaffolding your apps.
+      Iniciativa FoodTrupper
     </p>
     <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
   </div>

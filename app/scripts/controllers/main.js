@@ -9,12 +9,6 @@
  */
 angular.module('foodtrackwebApp')
   .controller('MainCtrl', function ($scope,Facebook) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-
     // Fan Pages
     // BrasilFoodTrucks:"244576275632539"
     // GuiaFoodTrucks:"1491757611043874"
@@ -42,6 +36,17 @@ angular.module('foodtrackwebApp')
       grids:[
         { objects:[], likes:0 },{objects:[], likes:0},{ objects:[], likes:0 }
       ]
+    }
+
+    $scope.isModalEnable = false
+
+    $scope.showTreadingTopicsModal = function(){
+      $scope.isModalEnable = true
+      $('#treadingTopicsModal').modal({keyboard:false})
+    }
+
+    $scope.hideTreadingTopicsModal = function(){
+      $scope.isModalEnable = false
     }
 
     var count = 0
