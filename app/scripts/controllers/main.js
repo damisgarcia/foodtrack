@@ -8,7 +8,7 @@
  * Controller of the foodtrackwebApp
  */
 angular.module('foodtrackwebApp')
-  .controller('MainCtrl', function ($scope,Facebook) {
+  .controller('MainCtrl', function ($scope,$interval,Facebook,ngProgress) {
     // Fan Pages
     // BrasilFoodTrucks:"244576275632539"
     // GuiaFoodTrucks:"1491757611043874"
@@ -40,13 +40,14 @@ angular.module('foodtrackwebApp')
 
     $scope.isModalEnable = false
     $scope.limit = 2
+    $scope.loaded = false
 
     $scope.showTreadingTopicsModal = function(){
       $scope.isModalEnable = true
       $scope.limit = 2
       $('#treadingTopicsModal').modal({keyboard:false})
 
-      scope.$apply();
+      $scope.$apply();
     }
 
     $scope.hideTreadingTopicsModal = function(){
@@ -56,23 +57,44 @@ angular.module('foodtrackwebApp')
     var count = 0
     var minLikes = 2
 
+    // Pre Loader
+    ngProgress.color("#337ab7")
+    ngProgress.start()
+    // Checando se a view terminou de carregar
+    var statusProgress = $interval(ngProgressOnRun,1000)
+
+    function ngProgressOnRun() {
+      console.log(ngProgress.status())
+      if(ngProgress.status() >= 95 ){
+        ngProgress.complete()
+        $scope.loaded = true
+        $interval.cancel(statusProgress)
+      }
+    }
+
+
+
     // Requisitando últimas postagens
     angular.forEach($scope.fanpages,function(fanpage,index,_array){
       Facebook.Fanpage.getPostsFanPage(fanpage.id,15,function(result, status, headers, config) {
         angular.forEach(result.data,function(post,index,_array){
           Facebook.Post.getImageFromPost(post.object_id,function(object, status, headers, config){
             // Populando e Randomizando a View
-            if(object.images != undefined && object.likes.data.length > minLikes)
-              $scope.posts.grids[count].objects.push(object)
-              count == 2 ? count = 0 : count++
-              if(!$scope.$$phase) {
-                $scope.$apply() //update view
-              }
-              if(index == (_array.length - 1)){
-                angular.forEach($scope.posts.grids,function(grid,index){
-                  $scope.posts.grids[index].objects = shuffle(grid.objects)
-                })
-              }
+            try{
+              if(object.images != undefined && object.likes.data.length > minLikes)
+                $scope.posts.grids[count].objects.push(object)
+                count == 2 ? count = 0 : count++
+                if(!$scope.$$phase) {
+                  $scope.$apply() //update view
+                }
+                if(index == (_array.length - 1)){
+                  angular.forEach($scope.posts.grids,function(grid,index){
+                    $scope.posts.grids[index].objects = shuffle(grid.objects)
+                  })
+                }
+            } catch(e){
+              // none
+            }
           });
         });
       });

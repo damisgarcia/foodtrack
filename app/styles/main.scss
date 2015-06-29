@@ -1,9 +1,13 @@
+@import "spinner-loader.scss";
+
+
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 
 // Font Familiy
 $droid-font-path: "DroidSansEthiopic-Regular.ttf";
 $droid-bold-font-path: "DroidSansEthiopic-Bold.ttf";
 $army-3d-font-path: "ArmyRangers3d.ttf";
+
 
 @font-face {
   font-family: "DroidSansEthiopic Regular";
