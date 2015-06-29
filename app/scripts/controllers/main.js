@@ -39,10 +39,14 @@ angular.module('foodtrackwebApp')
     }
 
     $scope.isModalEnable = false
+    $scope.limit = 2
 
     $scope.showTreadingTopicsModal = function(){
       $scope.isModalEnable = true
+      $scope.limit = 2
       $('#treadingTopicsModal').modal({keyboard:false})
+
+      scope.$apply();
     }
 
     $scope.hideTreadingTopicsModal = function(){
@@ -54,9 +58,9 @@ angular.module('foodtrackwebApp')
 
     // Requisitando últimas postagens
     angular.forEach($scope.fanpages,function(fanpage,index,_array){
-      Facebook.getPostsFanPage(fanpage.id,15,function(result, status, headers, config) {
+      Facebook.Fanpage.getPostsFanPage(fanpage.id,15,function(result, status, headers, config) {
         angular.forEach(result.data,function(post,index,_array){
-          Facebook.getImageFromPost(post.object_id,function(object, status, headers, config){
+          Facebook.Post.getImageFromPost(post.object_id,function(object, status, headers, config){
             // Populando e Randomizando a View
             if(object.images != undefined && object.likes.data.length > minLikes)
               $scope.posts.grids[count].objects.push(object)
@@ -80,4 +84,18 @@ angular.module('foodtrackwebApp')
       return o;
     }
 
-  });
+  })
+
+  .directive("onScroll",function($window) {
+    return {
+      restrict: 'A',
+      link: function(scope, element, attrs) {
+        var raw = element[0]
+        element.bind("scroll", function() {
+            if(raw.scrollTop + raw.offsetHeight >= raw.scrollHeight)
+              scope.limit++
+              scope.$apply();
+        });
+      }
+    };
+  })

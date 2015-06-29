@@ -11,17 +11,14 @@
     </div>
   </div>
   <div class="video-container">
-    <video autoplay="" preload="metadata" width="1380" height="800" loop="true" muted="true">
-      <source src="videos/food_on_wheels_sm.mp4" type="video/mp4"/>
-      <source src="videos/food_on_wheels_sm.webm" type="video/webm"/>
-    </video>
+    <img src="images/food_park_2.jpg" width="100%"/>
   </div>
 </div>
 <div class="last-posts-wrap">
   <div class="row last-posts">
     <div class="col col-md-4" ng-repeat="grid in posts.grids">
       <div class="animated fadeIn col col-md-12" ng-repeat="post in grid.objects | limitTo:2" on-finish-render="ngRepeatFinished">
-        <img src="{{post.images[0].source}}" class="img-responsive"/>
+        <img src="{{post.images[2].source}}" class="img-responsive"/>
       </div>
     </div>
   </div>
@@ -40,9 +37,9 @@
           <h4 class="modal-title" id="myModalLabel">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h4>
         </div>
         <div class="modal-body">
-          <div class="row last-posts">
+          <div class="row last-posts" on-scroll>
             <div class="col col-md-4" ng-repeat="grid in posts.grids">
-              <div class="animated fadeIn col col-md-12" ng-repeat="post in grid.objects" on-finish-render="ngRepeatFinished">
+              <div class="animated fadeIn col col-md-12" ng-repeat="post in grid.objects | limitTo: limit ">
                 <img src="{{post.images[0].source}}" class="img-responsive"/>
                 <div class="content">
                   <span class="divider"></span>
