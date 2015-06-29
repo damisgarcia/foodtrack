@@ -70,7 +70,7 @@ angular.module('foodtrackwebApp')
               }
               if(index == (_array.length - 1)){
                 angular.forEach($scope.posts.grids,function(grid,index){
-                  $scope.posts.grids[index] = shuffle(grid)
+                  $scope.posts.grids[index].objects = shuffle(grid.objects)
                 })
               }
           });

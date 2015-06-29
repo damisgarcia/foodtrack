@@ -11,7 +11,11 @@
     </div>
   </div>
   <div class="video-container">
-    <img src="images/food_park_2.jpg" width="100%"/>
+    <video width="1380" height="720" autoplay loop="true" muted="true">
+      <source src="videos/food_on_wheels_sm_360p.mp4" type="video/mp4">
+      <source src="videos/food_on_wheels_sm_360p.webm" type="video/webm">
+    </video>
+    <!-- <img src="images/food_park_2.jpg" width="100%"/> -->
   </div>
 </div>
 <div class="last-posts-wrap">
@@ -34,7 +38,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</h4>
+          <h4 class="modal-title" id="myModalLabel">Lá Fora Food Park dias 26,27,28 e 29.<br><small><b>Ver mais detalhes</b></small></h4>
         </div>
         <div class="modal-body">
           <div class="row last-posts" on-scroll>
@@ -56,11 +60,31 @@
             </div>
           </div>
         </div>
+        <div class="modal-footer">
+          <p>Anúcie Grátis seus Eventos</p>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<br>
+<br/>
+<div class="container">
+  <div class="row">
+    <div class="col md-12">
+      <h1>Rating Troopers</h1>
+      <hr>
+    </div>
+    <div class="col-md-4">
+      <poll-result-week-truckers-by-troopers></poll-result-week-truckers-by-troopers>
+    </div>
+    <div class="col-md-4">
+      <poll-result-week-truckers></poll-result-week-truckers>
+    </div>
+    <div class="col-md-4" ng-controller="PolltruckersCtrl">
+      <poll-truckers></poll-truckers>
+    </div>
+  </div>
+</div>
 <div class="container">
   <div class="jumbotron">
     <p class="lead">
