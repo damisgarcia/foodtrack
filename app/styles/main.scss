@@ -1,12 +1,41 @@
+@import "spinner-loader.scss";
+
+
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 
-// Font Face
-$fontface-logo-path: "RepublicaMinorBoldItalic.ttf";
+// Font Familiy
+$droid-font-path: "DroidSansEthiopic-Regular.ttf";
+$droid-bold-font-path: "DroidSansEthiopic-Bold.ttf";
+$army-3d-font-path: "ArmyRangers3d.ttf";
+
 
 @font-face {
-  font-family: "Republica Minor";
+  font-family: "DroidSansEthiopic Regular";
+  src: url($droid-font-path);
+}
+
+@font-face {
+  font-family: "DroidSansEthiopic Bold";
+  src: url($droid-bold-font-path);
+}
+
+@font-face {
+  font-family: "ArmyRangers 3d";
+  src: url($army-3d-font-path);
+}
+
+// Font Family Helpers
+.army-3d{
+  font-family: "ArmyRangers 3d";
+}
+
+.droid-regular{
+  font-family: "DroidSansEthiopic Regular";
+}
+
+.droid-bold{
+  font-family: "DroidSansEthiopic Bold";
   font-weight: bold;
-  src: url($fontface-logo-path);
 }
 
 // vars
@@ -47,8 +76,7 @@ iframe{
 
   // Logo Font
   .navbar-inverse .navbar-brand{
-    // font-family: "ArmyRangers";
-    font-size: 1.3em;
+    font-size: 18pt;
     color:white;
   }
 
@@ -115,11 +143,6 @@ iframe{
   }
 }
 
-/* Brands and Logo */
-#logo-title{
-  font-family: $fontface-logo-path;
-}
-
 
 /* Media */
 .video-wrap{
@@ -168,13 +191,14 @@ iframe{
     padding-top: 30px;
     padding-bottom: 56.25%;
     filter: blur(2px);
-    img{
+    img,video{
       position: absolute;
       background-color: black;
       top: -20px;
       left: 0;
       width: 100%;
       height: 100%;
+      filter: blur(6px);
     }
   }
 }
@@ -215,6 +239,7 @@ iframe{
 
   #treadingTopicsModal{
     .modal{
+      overflow: hidden;
       &.animated{
         -webkit-transition-duration: 0.2s;
         transition-duration: 0.2s;
@@ -222,10 +247,13 @@ iframe{
     }
     .modal-dialog{
       width:95% !important;
+      overflow: hidden;
       margin: 0 auto;
       .modal-content{
         background-color: transparent !important;
         box-shadow: none;
+        height: 100%;
+        overflow: inherit;
         display: flex;
         flex-direction: column;
       }
@@ -246,17 +274,24 @@ iframe{
         }
       }
       .modal-body{
-        overflow: auto;
-        max-height: 100%;
         height: 100%;
+        overflow: inherit;
+        padding: 5px;
         .last-posts{
           background-color: transparent !important;
-          max-height: 540px;
+          height: 800px;
+          max-height: 100%;
+          overflow: auto;
           img{
             filter: opacity(0.7) blur(0px);
           }
         }
       }
+    }
+    .modal-footer{
+      border-top: none;
+      color:white;
+      padding: 0px;
     }
     .modal-open .modal{
       overflow-x: hidden;
@@ -278,7 +313,7 @@ iframe{
     padding-left: 0px;
     padding-right: 0px;
     img{
-      filter: opacity(0.7) blur(1px);
+      filter: opacity(0.7) blur(3px);
       background-color: rgba(0,0,0,0.6);
       min-width: 100%;
       border-bottom:2px solid red;
