@@ -24,7 +24,6 @@ angular.module('foodtrackwebApp')
       }
     // private
     function HttpException(data, status){
-      console.log(data)
       return { error:data, status: status }
     }
 

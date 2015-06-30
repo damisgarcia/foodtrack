@@ -1,29 +1,30 @@
-<div class="video-wrap">
-  <div class="video-hero">
-    <div class="container">
-      <div class="row">
-        <h1 class="text-center">"Lorem ipsum dolor sit amet, consectetur adipisicing elit"</h1>
+<div class="text-center preloader-container" ng-hide="loaded" style="padding:1em;min-height:360px;">
+  <img src="images/loader-285.gif" width="32"/> <br>
+  <p> <small>Aguarde enquanto carregamos o conteúdo.</small> </p>
+</div>
+
+<div ng-show="loaded" class="animated fadeIn">
+  <div class="video-wrap">
+    <div class="video-hero">
+      <div class="container">
+        <div class="row">
+          <h1 class="text-center">"Lorem ipsum dolor sit amet, consectetur adipisicing elit"</h1>
+        </div>
+      </div>
+      <div class="row stores">
+        <img src="images/app-store-icon.png" class="pull-right" width="200">
+        <img src="images/google-play-icon.png" class="pull-right" width="200">
       </div>
     </div>
-    <div class="row stores">
-      <img src="images/app-store-icon.png" class="pull-right" width="200">
-      <img src="images/google-play-icon.png" class="pull-right" width="200">
+    <div class="video-container">
+      <video width="1380" height="720" autoplay loop="true" muted="true">
+        <source src="videos/food_on_wheels_sm_360p.mp4" type="video/mp4">
+        <source src="videos/food_on_wheels_sm_360p.webm" type="video/webm">
+      </video>
+      <!-- <img src="images/food_park_2.jpg" width="100%"/> -->
     </div>
   </div>
-  <div class="video-container">
-    <video width="1380" height="720" autoplay loop="true" muted="true">
-      <source src="videos/food_on_wheels_sm_360p.mp4" type="video/mp4">
-      <source src="videos/food_on_wheels_sm_360p.webm" type="video/webm">
-    </video>
-    <!-- <img src="images/food_park_2.jpg" width="100%"/> -->
-  </div>
-</div>
-<div class="text-center" ng-hide="loaded" style="padding:1em;">
-  <svg class="spinner" width="35px" height="35px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-   <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
-  </svg>
-</div>
-<div ng-show="loaded" class="animated fadeIn">
+
   <div class="last-posts-wrap">
     <div class="row last-posts">
       <div class="col col-md-4" ng-repeat="grid in posts.grids">
@@ -36,41 +37,6 @@
     <div class="last-posts-filter" ng-click="showTreadingTopicsModal()">
       <h1>Trending Topics Foodtrooper.</h1>
       <p class="text-right">O que é destaque jamais fica esquecido no Cosmos - Clique aqui vejá o que está acontecendo agora na cidade</p>
-    </div>
-
-    <!-- Thread Topics -->
-    <div class="modal animated" id="treadingTopicsModal" ng-class="isModalEnable ? 'fadeIn' : 'fadeOut' " tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Lá Fora Food Park dias 26,27,28 e 29.<br><small><b>Ver mais detalhes</b></small></h4>
-          </div>
-          <div class="modal-body">
-            <div class="row last-posts" on-scroll>
-              <div class="col col-md-4" ng-repeat="grid in posts.grids">
-                <div class="animated fadeIn col col-md-12" ng-repeat="post in grid.objects | limitTo: limit ">
-                  <img src="{{post.images[0].source}}" class="img-responsive"/>
-                  <div class="content">
-                    <span class="divider"></span>
-                    <div class="row">
-                      <div class="col-md-offeset-3 col-md-9">
-                        <h4>
-                          {{post.from.name}} <br>
-                          <small>{{post.updated_time | date:'medium'}}</small>
-                        </h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <p>Anúcie Grátis seus Eventos</p>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
   <br/>
@@ -113,6 +79,41 @@
 
       <h4>Karma</h4>
       <p>Spectacular Test Runner for JavaScript.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Thread Topics -->
+<div class="modal fade" id="treadingTopicsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Lá Fora Food Park dias 26,27,28 e 29.<br><small><b>Ver mais detalhes</b></small></h4>
+      </div>
+      <div class="modal-body">
+        <div class="row last-posts" on-scroll>
+          <div class="col col-md-4" ng-repeat="grid in posts.grids">
+            <div class="animated fadeIn col col-md-12" ng-repeat="post in grid.objects | limitTo: limit ">
+              <img src="{{post.images[0].source}}" class="img-responsive"/>
+              <div class="content">
+                <span class="divider"></span>
+                <div class="row">
+                  <div class="col-md-offeset-3 col-md-9">
+                    <h4>
+                      {{post.from.name}} <br>
+                      <small>{{post.updated_time | date:'medium'}}</small>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <p>Anúcie Grátis seus Eventos</p>
+      </div>
     </div>
   </div>
 </div>

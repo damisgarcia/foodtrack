@@ -150,6 +150,7 @@ iframe{
   overflow: hidden;
   margin: auto;
   max-height: 580px;
+  background-color: black;
 
   .video-hero{
     position: absolute;
@@ -209,6 +210,7 @@ iframe{
   position: relative;
   overflow: hidden;
   max-height:480px;
+  background-color: black;
 
   .last-posts-controls{
     position: absolute;
@@ -236,68 +238,6 @@ iframe{
       cursor: pointer;
     }
   }
-
-  #treadingTopicsModal{
-    .modal{
-      overflow: hidden;
-      &.animated{
-        -webkit-transition-duration: 0.2s;
-        transition-duration: 0.2s;
-      }
-    }
-    .modal-dialog{
-      width:95% !important;
-      overflow: hidden;
-      margin: 0 auto;
-      .modal-content{
-        background-color: transparent !important;
-        box-shadow: none;
-        height: 100%;
-        overflow: inherit;
-        display: flex;
-        flex-direction: column;
-      }
-      .modal-header{
-        color:#ddd;
-        border:none;
-        font-size: 0.6em;
-        min-height: 20px;
-        .close{
-          font-size: 32pt;
-          color:white;
-          opacity: 0.7;
-          top:0;
-          left: 0;
-          &:hover{
-            opacity: 1;
-          }
-        }
-      }
-      .modal-body{
-        height: 100%;
-        overflow: inherit;
-        padding: 5px;
-        .last-posts{
-          background-color: transparent !important;
-          height: 800px;
-          max-height: 100%;
-          overflow: auto;
-          img{
-            filter: opacity(0.7) blur(0px);
-          }
-        }
-      }
-    }
-    .modal-footer{
-      border-top: none;
-      color:white;
-      padding: 0px;
-    }
-    .modal-open .modal{
-      overflow-x: hidden;
-      overflow-y: hidden;
-    }
-  }
 }
 .last-posts{
   display: flex;
@@ -313,7 +253,7 @@ iframe{
     padding-left: 0px;
     padding-right: 0px;
     img{
-      filter: opacity(0.7) blur(3px);
+      filter: opacity(0.3);
       background-color: rgba(0,0,0,0.6);
       min-width: 100%;
       border-bottom:2px solid red;
@@ -388,4 +328,77 @@ iframe{
 // Modal Overide
 .modal-backdrop.in{
   opacity: 0.9;
+}
+
+
+#treadingTopicsModal{
+  .modal{
+    overflow: hidden;
+    &.animated{
+      -webkit-transition-duration: 0.2s;
+      transition-duration: 0.2s;
+    }
+  }
+  .modal-dialog{
+    width:95% !important;
+    overflow: hidden;
+    margin: 0 auto;
+    .modal-content{
+      background-color: transparent !important;
+      box-shadow: none;
+      height: 100%;
+      overflow: inherit;
+      display: flex;
+      flex-direction: column;
+    }
+    .modal-header{
+      color:#ddd;
+      border:none;
+      font-size: 0.6em;
+      min-height: 20px;
+      .close{
+        font-size: 32pt;
+        color:white;
+        opacity: 0.7;
+        top:0;
+        left: 0;
+        &:hover{
+          opacity: 1;
+        }
+      }
+    }
+    .modal-body{
+      height: 100%;
+      overflow: inherit;
+      padding: 5px;
+      .last-posts{
+        background-color: transparent !important;
+        height: 800px;
+        max-height: 100%;
+        overflow: auto;
+        img{
+          filter: opacity(0.7) blur(0px);
+        }
+      }
+    }
+  }
+  .modal-footer{
+    border-top: none;
+    color:white;
+    padding: 0px;
+  }
+  .modal-open .modal{
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+}
+
+.preloader-container{
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img{
+    margin: 15px;
+  }
 }

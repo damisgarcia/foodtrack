@@ -8,7 +8,7 @@
  * Controller of the foodtrackwebApp
  */
 angular.module('foodtrackwebApp')
-  .controller('MainCtrl', function ($scope,$interval,Facebook,ngProgress) {
+  .controller('MainCtrl', function ($scope,$interval,Facebook,Preloader) {
     // Fan Pages
     // BrasilFoodTrucks:"244576275632539"
     // GuiaFoodTrucks:"1491757611043874"
@@ -47,7 +47,9 @@ angular.module('foodtrackwebApp')
       $scope.limit = 2
       $('#treadingTopicsModal').modal({keyboard:false})
 
-      $scope.$apply();
+      if(!$scope.$$phase) {
+        $scope.$apply(); //update view
+      }
     }
 
     $scope.hideTreadingTopicsModal = function(){
@@ -57,21 +59,9 @@ angular.module('foodtrackwebApp')
     var count = 0
     var minLikes = 2
 
-    // Pre Loader
-    ngProgress.color("#337ab7")
-    ngProgress.start()
-    // Checando se a view terminou de carregar
-    var statusProgress = $interval(ngProgressOnRun,1000)
-
-    function ngProgressOnRun() {
-      console.log(ngProgress.status())
-      if(ngProgress.status() >= 95 ){
-        ngProgress.complete()
-        $scope.loaded = true
-        $interval.cancel(statusProgress)
-      }
-    }
-
+    Preloader.initializer(function() {
+      $scope.loaded = true
+    })
 
 
     // Requisitando últimas postagens
