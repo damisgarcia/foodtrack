@@ -18,9 +18,10 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ngProgress'
+    'ngProgress',
+    'uiGmapgoogle-maps'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider,uiGmapGoogleMapApiProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -41,4 +42,10 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+
+      uiGmapGoogleMapApiProvider.configure({
+        key: 'AIzaSyDL-Z0L2jI0A6QbqeYVV9FTXCbe5vrr1k8',
+        v: '3.17',
+        libraries: 'weather,geometry,visualization'
+       });
   });

@@ -8,7 +8,7 @@
  * Controller of the foodtrackwebApp
  */
 angular.module('foodtrackwebApp')
-  .controller('MainCtrl', function ($scope,$interval,Facebook,Preloader) {
+  .controller('MainCtrl', function ($scope,$window,$timeout,Facebook,Foodtroopers,Preloader,uiGmapGoogleMapApi,uiGmapIsReady) {
     // Fan Pages
     // BrasilFoodTrucks:"244576275632539"
     // GuiaFoodTrucks:"1491757611043874"
@@ -61,6 +61,10 @@ angular.module('foodtrackwebApp')
 
     Preloader.initializer(function() {
       $scope.loaded = true
+      angular.forEach($scope.maps,function(instance,index){
+        Foodtroopers.Maps.setMarkers(instance.map)
+        Foodtroopers.Maps.resize(instance.map,600) // (map,timeout)
+      })
     })
 
 
@@ -88,6 +92,41 @@ angular.module('foodtrackwebApp')
           });
         });
       });
+    });
+
+    uiGmapGoogleMapApi.then(function(maps) {
+      Foodtroopers.Maps.getUserLocation(function(position){
+        $scope.map = { center: position.coords, zoom: 14, places:[] }
+
+        angular.forEach($window.trucks, function(truck,index){
+          if(truck.geolocation != null)
+            $scope.map.places.push({
+              idKey:index,
+              latitude:truck.geolocation.latitude,
+              longitude:truck.geolocation.longitude,
+              title:truck.name
+            })
+        })
+
+      },function(){
+        $scope.map = { center: $window.trucks[0].geolocation, zoom: 14, places:[] }
+
+        angular.forEach($window.trucks, function(truck,index){
+          if(truck.geolocation != null)
+            $scope.map.places.push({
+              idKey:index,
+              coords:truck.geolocation,
+              title:truck.name
+            })
+        })
+
+      });
+      $scope.trucks = $window.trucks
+    });
+
+    // Resize Maps
+    uiGmapIsReady.promise(1).then(function(instances) {
+      $scope.maps = instances
     });
 
     // Embaralhando Array
