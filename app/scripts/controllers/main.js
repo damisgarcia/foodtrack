@@ -91,15 +91,17 @@ angular.module('foodtrackwebApp')
                 if(!$scope.$$phase) {
                   $scope.$apply() //update view
                 }
-                if(index == (_array.length - 1)){
-                  angular.forEach($scope.posts.grids,function(grid,index){
-                    $scope.posts.grids[index].objects = shuffle(grid.objects)
-                  })
-                }
             } catch(e){
               // none
             }
           });
+
+          if(index == (_array.length - 1)){
+            angular.forEach($scope.posts.grids,function(grid,index){
+              $scope.posts.grids[index].objects = shuffle(grid.objects)
+            })
+          }
+
         });
       });
     });

@@ -20,7 +20,7 @@ angular.module('foodtrackwebApp')
         var statusProgress = $interval(ngProgressOnRun,100)
 
         function ngProgressOnRun() {
-          if(ngProgress.status() >= 95 ){
+          if(ngProgress.status() >= 50 ){
             ngProgress.complete()
 
             if(callback != undefined && callback != null)
