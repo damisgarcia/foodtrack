@@ -39,6 +39,7 @@ angular.module('foodtrackwebApp')
     }
 
     $scope.isModalEnable = false
+    $scope.isMapPromoVisible = true
     $scope.limit = 2
     $scope.loaded = false
 
@@ -55,6 +56,15 @@ angular.module('foodtrackwebApp')
     $scope.hideTreadingTopicsModal = function(){
       $scope.isModalEnable = false
     }
+
+    $scope.closeMapPromo  = function () {
+      $scope.isMapPromoVisible = false
+    }
+
+    // GET Locations for Trucks
+    Foodtroopers.Truck.getAll(null, function(json){
+      $scope.trucks = json
+    })
 
     var count = 0
     var minLikes = 2
@@ -96,9 +106,9 @@ angular.module('foodtrackwebApp')
 
     uiGmapGoogleMapApi.then(function(maps) {
       Foodtroopers.Maps.getUserLocation(function(position){
-        $scope.map = { center: position.coords, zoom: 14, places:[] }
+        $scope.map = { center: position.coords, zoom: 17, places:[] }
 
-        angular.forEach($window.trucks, function(truck,index){
+        angular.forEach($scope.trucks, function(truck,index){
           if(truck.geolocation != null)
             $scope.map.places.push({
               idKey:index,
@@ -109,7 +119,7 @@ angular.module('foodtrackwebApp')
         })
 
       },function(){
-        $scope.map = { center: $window.trucks[0].geolocation, zoom: 14, places:[] }
+        $scope.map = { center: $window.trucks[0].geolocation, zoom: 17, places:[] }
 
         angular.forEach($window.trucks, function(truck,index){
           if(truck.geolocation != null)
@@ -119,9 +129,7 @@ angular.module('foodtrackwebApp')
               title:truck.name
             })
         })
-
       });
-      $scope.trucks = $window.trucks
     });
 
     // Resize Maps
