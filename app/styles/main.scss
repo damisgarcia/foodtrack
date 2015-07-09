@@ -165,13 +165,13 @@ iframe{
     right: 0;
     z-index: 10;
     color: white;
-    // background: url(../images/stars-texture.png);
-    // background-attachment: fixed;
-    // background-position: top center;
-    // background-size: 100% 100%;
-    // background-repeat: no-repeat;
-    // -webkit-transition: background-size 5s ease;
-    // transition: background-size 5s ease;
+    background: url(../images/stars-texture.png);
+    background-attachment: fixed;
+    background-position: top center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    -webkit-transition: background-size 5s ease;
+    transition: background-size 5s ease;
     h1{ font-size: 3em; }
     h3{ font-size: 1.4em;}
     &:hover{
