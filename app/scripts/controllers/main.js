@@ -108,7 +108,7 @@ angular.module('foodtrackwebApp')
 
     uiGmapGoogleMapApi.then(function(maps) {
       Foodtroopers.Maps.getUserLocation(function(position){
-        $scope.map = { center: position.coords, zoom: 17, places:[] }
+        $scope.map = { center: position.coords, zoom: 14, places:[] }
 
         angular.forEach($scope.trucks, function(truck,index){
           if(truck.geolocation != null)
@@ -121,7 +121,7 @@ angular.module('foodtrackwebApp')
         })
 
       },function(){
-        $scope.map = { center: $window.trucks[0].geolocation, zoom: 17, places:[] }
+        $scope.map = { center: $window.trucks[0].geolocation, zoom: 14, places:[] }
 
         angular.forEach($window.trucks, function(truck,index){
           if(truck.geolocation != null)
