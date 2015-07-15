@@ -26,18 +26,7 @@ angular.module('foodtrackwebApp')
       self.Maps = {
         resize: function(map,TIMEOUT){
           $timeout(function(){
-            var styles = [{"featureType":"all","elementType":"all","stylers":[{"invert_lightness":true},{"saturation":10},{"lightness":30},{"gamma":0.5},{"hue":"#435158"}]}]
-
             map.setOptions({
-              styles: styles,
-              scrollwheel: false,
-              navigationControl: false,
-              mapTypeControl: false,
-              scaleControl: false,
-              draggable: true,
-              mapTypeControl: true,
-              panControl: false,
-              mapTypeControl: false,
               zoomControlOptions: {
                 position: google.maps.ControlPosition.TOP_RIGHT
               }

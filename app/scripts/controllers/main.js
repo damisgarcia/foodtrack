@@ -41,7 +41,21 @@ angular.module('foodtrackwebApp')
     $scope.isModalEnable = false
     $scope.isMapPromoVisible = true
     $scope.limit = 2
-    $scope.loaded = false
+
+    var styles = [{"featureType":"all","elementType":"all","stylers":[{"invert_lightness":true},{"saturation":10},{"lightness":30},{"gamma":0.5},{"hue":"#435158"}]}]
+    var gmaps_options = {
+      styles: styles,
+      scrollwheel: false,
+      navigationControl: false,
+      mapTypeControl: false,
+      scaleControl: false,
+      draggable: true,
+      mapTypeControl: true,
+      panControl: false,
+      mapTypeControl: false
+    }
+
+    $scope.map = { zoom: 14, places:[], options: gmaps_options }
 
     $scope.showTreadingTopicsModal = function(){
       $scope.isModalEnable = true
@@ -108,8 +122,7 @@ angular.module('foodtrackwebApp')
 
     uiGmapGoogleMapApi.then(function(maps) {
       Foodtroopers.Maps.getUserLocation(function(position){
-        $scope.map = { center: position.coords, zoom: 14, places:[] }
-
+        $scope.map.center = position.coords
         angular.forEach($scope.trucks, function(truck,index){
           if(truck.geolocation != null)
             $scope.map.places.push({
@@ -119,10 +132,8 @@ angular.module('foodtrackwebApp')
               title:truck.name
             })
         })
-
       },function(){
-        $scope.map = { center: $window.trucks[0].geolocation, zoom: 14, places:[] }
-
+        $scope.map.center =  $window.trucks[0].geolocation,
         angular.forEach($window.trucks, function(truck,index){
           if(truck.geolocation != null)
             $scope.map.places.push({
