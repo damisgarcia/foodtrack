@@ -15,51 +15,58 @@ angular.module('foodtrackwebApp')
       var domain = "http://madalice.herokuapp.com/api/v1/"
 
       self.Truck = {
-        getAll: function(pages,callback) {
-          var path = "trucks"
-          var pagination = ""
-          pages != null && pages != undefined ? pagination =  "?pages="+ pages : false
-          $http.jsonp(domain + path + "?callback=JSON_CALLBACK").success(callback).error(HttpException);
+        getAll: function(latitude,longitude,pages,callback) {
+          var path = "trucks?"
+          var query = ""
+          // Build Query
+          query = domain + path
+          if (pages != null && pages != undefined)
+            query += "pages="+pages
+          if ( (latitude != null && latitude != undefined) && (longitude != null && longitude != undefined) )
+            query += "&latitude="+latitude
+            query += "&longitude="+longitude
+
+          query.search("\&") != -1 ? query += "&callback=JSON_CALLBACK" : query += "callback=JSON_CALLBACK"
+
+          $http.jsonp(query).success(callback).error(HttpException);
         }
-      }
+      },
+
+      self.Events = {
+        getAll: function(pages,latitude,longitude,callback){
+          var path = "events?"
+          var query = ""
+          // Build Query
+          query = domain + path
+          if (pages != null && pages != undefined)
+            query += "pages="+pages
+          if ( (latitude != null && latitude != undefined) && (longitude != null && longitude != undefined) )
+            query += "&latitude="+latitude
+            query += "&longitude="+longitude
+
+          query.search("\&") != -1 ? query += "&callback=JSON_CALLBACK" : query += "callback=JSON_CALLBACK"
+
+          $http.jsonp(query).success(callback).error(HttpException);
+        }
+      },
 
       self.Maps = {
-        resize: function(map,TIMEOUT){
-          $timeout(function(){
-            map.setOptions({
-              zoomControlOptions: {
-                position: google.maps.ControlPosition.TOP_RIGHT
-              }
-            })
-
-            google.maps.event.trigger(map,'resize') // Repair Bug Map Grey Resize
-          },TIMEOUT);
-        },
-
         getUserLocation: function (callback,onFail) {
           if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
               callback,
               function(error){
-                self.Maps.navigatorGeoLocationException(error,onFail)
+                self.Maps.navigatorGeoLocationException(error,function(){
+                  $http.jsonp("http://ip-api.com/json/?callback=JSON_CALLBACK").success(function(data){
+                    onFail(data)
+                  })
+                })
               }
             );
           } else {
             console.debug("Geo Location","Browser not supported this resource.")
           }
-        },
-
-        setMarkers: function(map){
-          for(var truck in $window.trucks){
-            if(truck.geolocation != null)
-              var position =  new google.maps.LatLng(truck.geolocation.latitude,truck.geolocation.longitude)
-              var marker = new google.maps.Marker({
-                position: position,
-                map: map,
-                title: truck.name
-              })
-          }
-        },
+        },        
 
         navigatorGeoLocationException: function(error,callback){
           switch(error.code) {
@@ -76,6 +83,7 @@ angular.module('foodtrackwebApp')
               console.log("An unknown error occurred.")
               break;
           }
+          callback()
         }
       }
     // private

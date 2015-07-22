@@ -32,7 +32,7 @@
     <div class="row last-posts">
       <div class="col col-md-4" ng-repeat="grid in posts.grids">
         <div class="animated fadeIn col col-md-12" ng-repeat="post in grid.objects | limitTo:2" on-finish-render="ngRepeatFinished">
-          <img src="{{post.images[2].source}}" class="img-responsive"/>
+          <img src="{{post.images.low_resolution.url}}" class="img-responsive"/>
         </div>
       </div>
     </div>
@@ -51,19 +51,25 @@
       <ui-gmap-markers models="map.places" coords="'self'" doCluster="true" icon="'icon'" idKey="'idKey'"></ui-gmap-markers>
     </ui-gmap-google-map>
     <div class="event-map-promo animated" ng-class="{fadeOut:!isMapPromoVisible}" ng-show="isMapPromoVisible">
-      <h2 class="text-center">Fortaleza</h2>
-      <h4 class="text-center">15 eventos programados, com 60 trucks e mais de 600 opções de pratos.</h4>
+      <h2 class="text-center">{{city}}</h2>
     </div>
   </div>
 
   <div class="container">
-    <!-- <div class="jumbotron">
-      <p class="lead">
-        <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-        Iniciativa FoodTrupper
-      </p>
-      <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-    </div> -->
+
+    <div class="row" id="events">
+      <h2>Eventos</h2>
+      <hr>
+      <div class="col col-md-12" ng-repeat="ev in events | limitTo: 15">
+        <h4>{{ev.name}}</h4>
+        <p>{{ev.description}}</p>
+        <time>{{ev.schedule}}</time>  <time class="date">{{ev.event_date | date:'medium'}}</time>
+        <div class="row">
+          <img class="img-circle" ng-repeat="truck in ev.trucks | filter: EventIsConfirmed" src="{{truck.social_media.instagram.profile_picture}}" width="32"/>
+        </div>
+        <hr>
+      </div>
+    </div>
 
     <h2>Iniciativa Food Troopers</h2>
     <hr>
@@ -106,32 +112,6 @@
       </a>
     </div>
   </div>
-  <div class="contact-us">
-    <div class="container">
-      <h2>Fale Conosco</h2>
-      <hr>
-      <form role="form">
-        <div class="form-group">
-          <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
-         </div>
-         <div class="form-group">
-           <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
-         </div>
-         <div class="form-group">
-           <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number" required>
-         </div>
-         <div class="form-group">
-           <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
-         </div>
-         <div class="form-group">
-         <textarea class="form-control" type="textarea" id="message" placeholder="Message" maxlength="140" rows="7"></textarea>
-             <span class="help-block"><p id="characterLeft" class="help-block ">You have reached the limit</p></span>
-         </div>
-         <button type="button" id="submit" name="submit" class="btn btn-large btn-success">Submit Form</button>
-       </form>
-       <br>
-    </div>
-  </div>
 </div>
 
 <!-- Thread Topics -->
@@ -146,14 +126,17 @@
         <div class="row last-posts" on-scroll>
           <div class="col col-md-4" ng-repeat="grid in posts.grids">
             <div class="animated fadeIn col col-md-12" ng-repeat="post in grid.objects | limitTo: limit ">
-              <img src="{{post.images[0].source}}" class="img-responsive"/>
+              <img src="{{post.images.standard_resolution.url}}" class="img-responsive"/>
               <div class="content">
                 <span class="divider"></span>
                 <div class="row">
-                  <div class="col-md-offeset-3 col-md-9">
+                  <div class="col col-xs-offset-1 col-xs-1">
+                    <img src="{{post.user.profile_picture}}" class="icon"/>
+                  </div>
+                  <div class="col col-xs-9">
                     <h4>
-                      {{post.from.name}} <br>
-                      <small>{{post.updated_time | date:'medium'}}</small>
+                      @{{post.user.username}} <br>
+                      <small>{{post.created_time | date:'medium'}}</small>
                     </h4>
                   </div>
                 </div>
@@ -162,9 +145,9 @@
           </div>
         </div>
       </div>
-      <!-- <div class="modal-footer">
-        <p></p>
-      </div> -->
+      <div class="modal-footer">
+        <p>Entre em contato - foodtroopers@gmail.com</p>
+      </div>
     </div>
   </div>
 </div>
