@@ -41,7 +41,7 @@
       <h1>Trending Topics Foodtrooper.</h1>
       <p class="text-right">O que é destaque jamais fica esquecido no Cosmos </p>
       <button class="btn btn-large btn-success" ng-click="showTreadingTopicsModal()">
-        Clique aqui e veja o que está acontecendo agora na Cidade
+        Clique aqui para ver o que está em Destaque na sua Região
       </button>
     </div>
   </div>
@@ -56,44 +56,6 @@
   </div>
 
   <div class="container">
-
-    <div class="row" id="events">
-      <h2>Eventos</h2>
-      <hr>
-      <div class="col col-md-12" ng-repeat="ev in events | limitTo: 15">
-        <h4>{{ev.name}}</h4>
-        <p>{{ev.description}}</p>
-        <time>{{ev.schedule}}</time>  <time class="date">{{ev.event_date | date:'medium'}}</time>
-        <div class="row">
-          <img class="img-circle" ng-repeat="truck in ev.trucks | filter: EventIsConfirmed" src="{{truck.social_media.instagram.profile_picture}}" width="32"/>
-        </div>
-        <hr>
-      </div>
-    </div>
-
-    <h2>Iniciativa Food Troopers</h2>
-    <hr>
-    <div class="row">
-      <div class="col-md-6">
-        <p>
-          Curabitur aliquet quam id dui posuere blandit.
-      Vivamus suscipit tortor eget felis porttitor volutpat.
-      Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
-      Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
-      Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
-        </p>
-      </div>
-      <div class="col-md-6">
-        <p>
-          Curabitur aliquet quam id dui posuere blandit.
-      Vivamus suscipit tortor eget felis porttitor volutpat.
-      Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
-      Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
-      Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
-        </p>
-      </div>
-    </div>
-
     <h2>Acompanhe Nossas Redes Sociais</h2>
     <hr>
   </div>

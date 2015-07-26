@@ -9,4 +9,5 @@
  */
 angular.module('foodtrackwebApp')
   .controller('AboutCtrl', function ($scope,Preloader) {
+    Preloader.initializer("#f57c00",30,null)
   });

@@ -1,0 +1,22 @@
+// Cards
+.panel{
+  .panel-body.overflow{
+    max-height: 320px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  .panel-footer{
+    background-color: white;
+    border-color: transparent !important;
+    img{
+      margin: auto 2px;
+    }
+  }
+}
+.panel-primary{
+  .panel-heading{
+    background-color: transparentize($indigo,0.9);
+    border: $red;
+    color: #333;
+  }
+}

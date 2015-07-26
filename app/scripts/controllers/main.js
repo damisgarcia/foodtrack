@@ -8,7 +8,16 @@
  * Controller of the foodtrackwebApp
  */
 angular.module('foodtrackwebApp')
-  .controller('MainCtrl', function ($scope,$window,$timeout,Facebook,Instagram,Foodtroopers,Preloader,uiGmapGoogleMapApi,uiGmapIsReady) {
+  .controller('MainCtrl',
+    function(
+      $scope,
+      $window,
+      $timeout,
+      Instagram,
+      Foodtroopers,
+      Preloader,
+      uiGmapGoogleMapApi,
+      uiGmapIsReady ) {
     $scope.city = "Fortaleza"
     $scope.posts = {
       grids:[
@@ -61,19 +70,21 @@ angular.module('foodtrackwebApp')
     // Requisitando a Localização do Usuário
     Foodtroopers.Maps.getUserLocation(function(position){
       $scope.map.center = position.coords
-      getTrucks(position.coords)
-      getEvents(position.coords)
+      $window.position = position.coords
+      getTrucks($window.position)
+      getEvents($window.position)
     },function(res){
       var position = {latitude: res.lat, longitude: res.lon}
       $scope.map.center =  position
       $scope.city = res.city
-      getTrucks(position)
-      getEvents(position)
+      $window.position = position
+      getTrucks($window.position)
+      getEvents($window.position)
     });
 
 
     // Iniciando Preloader
-    Preloader.initializer(function() {
+    Preloader.initializer("#ffffff",null,function() {
       $scope.loaded = true
     })
 
@@ -95,6 +106,7 @@ angular.module('foodtrackwebApp')
     function getTrucks(position){
       Foodtroopers.Truck.getAll(null,position.latitude,position.longitude, function(json){
         $scope.trucks = json
+        console.log($scope.trucks)
         var count = 0
         var minLikes = 20
         angular.forEach($scope.trucks,function(truck,index,_array){
@@ -125,24 +137,24 @@ angular.module('foodtrackwebApp')
       });
     }
 
-    function getEvents(position){
-      // GET EVENTS by Locations
-      Foodtroopers.Events.getAll(null,position.latitude,position.longitude,function(json){
-        $scope.events = json
-        // Quando Google Maps Loaded
-        uiGmapGoogleMapApi.then(function(maps) {
-          angular.forEach($scope.events, function($event,index){
-            if($event.geolocation != null){
-              $scope.map.places.push({
-                idKey:index,
-                latitude:$event.geolocation.latitude,
-                longitude:$event.geolocation.longitude                
-              })
-            }
-          })
-        });
-      })
-    }
+      function getEvents(position){
+        // GET EVENTS by Locations
+        Foodtroopers.Events.getAll(null,position.latitude,position.longitude,function(json){
+          $scope.events = json
+          // Quando Google Maps Loaded
+          uiGmapGoogleMapApi.then(function(maps) {
+            angular.forEach($scope.events, function($event,index){
+              if($event.geolocation != null){
+                $scope.map.places.push({
+                  idKey:index,
+                  latitude:$event.geolocation.latitude,
+                  longitude:$event.geolocation.longitude
+                })
+              }
+            })
+          });
+        })
+      }
 
   })
 

@@ -1,0 +1,37 @@
+<div class="indigo animated slideInDown">
+  <div class="container ft-navbar">
+    <h1>Eventos</h1>
+  </div>
+</div>
+<div id="events" class="animated fadeIn">
+  <div class="container">
+    <div class="col col-md-12 animated fadeIn" ng-repeat="ev in events">
+      <div class="row">
+        <div class="panel panel-default overflow" ng-class="{ 'panel-primary': $first }">
+          <div class="panel-heading">
+            <div class="row">
+              <time class="panel-title text-right col col-md-12">
+                <i ng-if="$first" class="featured glyphicon glyphicon-star pull-left" title="Destaque"></i>
+                 <small>{{ev.event_date | date:'medium'}}</small>
+               </time>
+            </div>
+          </div>
+          <div class="panel-body">
+            <h2>{{ev.name}}</h2>
+            <p>{{ev.description}}</p>
+          </div>
+          <div class="panel-footer">
+            <div class="row">
+              <div class="col col-md-2">
+                <time>Horário: {{ev.schedule}}</time>
+              </div>
+              <div class="col col-md-10 text-right">
+                <img class="img-circle" ng-repeat="truck in ev.trucks | filter: EventIsConfirmed | limitTo: 8" src="{{truck.social_media.instagram.profile_picture}}" title="{{truck.name}}" width="32"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

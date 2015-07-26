@@ -1,5 +1,9 @@
 @import "vars.scss";
-@import "spinner-loader.scss";
+@import "cards.scss";
+@import "ft-navbar.scss";
+@import "helpers.scss";
+@import "icons.scss";
+
 
 
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
@@ -57,16 +61,22 @@ body {
   padding: 0;
 }
 
+.header{
+  margin-bottom:0px;
+}
+
+.yield{
+  min-height: 640px;
+}
+
 iframe{
   max-width: 100%;
   height: auto;
 }
 
 time{
-  &.date{
-    color: transparentize(black, 0.5);
-    float: right;
-  }
+  display: block;
+  color: transparentize(black, 0.5);
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -79,13 +89,42 @@ time{
 
 /* Custom page header */
 .header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
-
+  .navbar{
+    margin-bottom:0px;
+    border-radius:0px;
+  }
   // Logo Font
-  .navbar-inverse .navbar-brand{
+  .navbar .navbar-brand{
     font-size: 18pt;
+  }
+
+  .navbar-inverse .navbar-brand{
     color:white;
+  }
+
+  .navbar-default {
+    border: none;
+    .navbar-brand{
+      color:white;
+    }
+    .navbar-header{
+      background-color: darken($red,10);
+      color:white;
+    }
+    .navbar-nav{
+      li{
+        a{
+          color: transparentize(white,0.5);
+        }
+        &.active{
+          background-color: transparent !important;
+          a{
+            background-color:transparent !important;
+            color: white;
+          }
+        }
+      }
+    }
   }
   .navbar{
     .foodtrooper-logo{
@@ -147,10 +186,6 @@ time{
   .footer {
     padding-left: 0;
     padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
   }
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
@@ -289,7 +324,7 @@ time{
     padding-left: 0px;
     padding-right: 0px;
     img{
-      filter: opacity(0.3);
+      opacity: 0.3;
       background-color: rgba(0,0,0,0.6);
       min-width: 100%;
       border-bottom:2px solid red;
@@ -453,7 +488,7 @@ time{
   position: relative;
   .event-map-promo{
     position: absolute;
-    top:2.5em;
+    top:3.5em;
     left: 0;
     right: 0;
     width: 95%;
@@ -481,6 +516,10 @@ time{
   }
 }
 
+#events, #about{
+  background-color: #efefef;
+  padding-top: 3em;
+}
 
 // Promos
 .social-promo{

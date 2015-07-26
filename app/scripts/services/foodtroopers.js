@@ -66,7 +66,7 @@ angular.module('foodtrackwebApp')
           } else {
             console.debug("Geo Location","Browser not supported this resource.")
           }
-        },        
+        },
 
         navigatorGeoLocationException: function(error,callback){
           switch(error.code) {

@@ -12,15 +12,17 @@ angular.module('foodtrackwebApp')
     var Preloader = (function(){
       var self = {}
       // Service logic
-      self.initializer = function(callback) {
+      self.initializer = function(progressColor,percentToComplete,callback) {
         // Pre Loader
-        ngProgress.color("#337ab7")
+        var pgColor = progressColor || "#337ab7"
+        var toComplete = percentToComplete || 90
+        ngProgress.color(pgColor)
         ngProgress.start()
         // Checando se a view terminou de carregar
         var statusProgress = $interval(ngProgressOnRun,100)
 
         function ngProgressOnRun() {
-          if(ngProgress.status() >= 75 ){
+          if(ngProgress.status() >= toComplete ){
             ngProgress.complete()
 
             if(callback != undefined && callback != null)
