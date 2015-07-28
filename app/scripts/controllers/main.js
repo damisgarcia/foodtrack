@@ -19,7 +19,7 @@ angular.module('foodtrackwebApp')
       Preloader,
       uiGmapGoogleMapApi,
       uiGmapIsReady ) {
-    $scope.city = "Fortaleza"
+    $rootScope.$city = "Fortaleza"
     $scope.posts = {
       grids:[
         { objects:[], likes:0 },{objects:[], likes:0},{ objects:[], likes:0 }
@@ -68,20 +68,19 @@ angular.module('foodtrackwebApp')
       $scope.isMapPromoVisible = false
     }
 
-    // Requisitando a Localização do Usuário
-    Foodtroopers.Maps.getUserLocation(function(position){
-      $scope.map.center = position.coords
-      $window.position = position.coords
-      getTrucks($window.position)
-      getEvents($window.position)
-    },function(res){
-      var position = {latitude: res.lat, longitude: res.lon}
-      $scope.map.center =  position
-      $scope.city = res.city
-      $window.position = position
-      getTrucks($window.position)
-      getEvents($window.position)
-    });
+    try{
+      $scope.map.center = $rootScope.$position
+      getTrucks($rootScope.$position)
+      getEvents($rootScope.$position)
+    }catch(e){
+      $rootScope.location_defer.promise.then(function(resolve){
+        $scope.map.center = $rootScope.$position
+        getTrucks($rootScope.$position)
+        getEvents($rootScope.$position)
+      })
+
+      console.log("Execeção")
+    }
 
     // Iniciando Preloader
     Preloader.initializer("#ffffff",null,function() {
@@ -104,9 +103,40 @@ angular.module('foodtrackwebApp')
 
     // GET Locations for Trucks
     function getTrucks(position){
-      Foodtroopers.Truck.getAll(null,position.latitude,position.longitude, function(json){
-        $scope.trucks = json
-        console.log($scope.trucks)
+      if($rootScope.$trucks == null || $rootScope.$trucks == undefined){
+        Foodtroopers.Truck.getAll(null,position.latitude,position.longitude, function(json){
+          $rootScope.$trucks = json
+          $scope.trucks = $rootScope.$trucks
+          var count = 0
+          var minLikes = 20
+          angular.forEach($scope.trucks,function(truck,index,_array){
+            // Requisitando Postagem Instargram
+            Instagram.getRecentMediasById(truck.social_media.instagram.id,function(result, status, headers, config){
+              angular.forEach(result.data,function(media,index){
+                try{
+                  if(media.likes.count > minLikes){
+                    $scope.posts.grids[count].objects.push(media)
+                    count == 2 ? count = 0 : count++
+                  }
+                } catch(e){
+                  // none
+                }
+              })
+
+              if(index == (_array.length - 1))
+                angular.forEach($scope.posts.grids,function(grid,index){
+                  $scope.posts.grids[index].objects = shuffle(grid.objects)
+                })
+
+            })
+
+            if(!$scope.$$phase){
+              $scope.$apply() //update view
+            }
+          })
+        });
+      } else {
+        $scope.trucks = $rootScope.$trucks
         var count = 0
         var minLikes = 20
         angular.forEach($scope.trucks,function(truck,index,_array){
@@ -134,13 +164,30 @@ angular.module('foodtrackwebApp')
             $scope.$apply() //update view
           }
         })
-      });
+      }
     }
 
       function getEvents(position){
         // GET EVENTS by Locations
-        Foodtroopers.Events.getAll(null,position.latitude,position.longitude,function(json){
-          $scope.events = json
+        if($rootScope.$e == null || $rootScope.$e == undefined){
+          Foodtroopers.Events.getAll(null,position.latitude,position.longitude,function(json){
+            $rootScope.$e = json
+            $scope.events = $rootScope.$e
+            // Quando Google Maps Loaded
+            uiGmapGoogleMapApi.then(function(maps) {
+              angular.forEach($scope.events, function($event,index){
+                if($event.geolocation != null){
+                  $scope.map.places.push({
+                    idKey:index,
+                    latitude:$event.geolocation.latitude,
+                    longitude:$event.geolocation.longitude
+                  })
+                }
+              })
+            });
+          })
+        } else {
+          $scope.events = $rootScope.$e
           // Quando Google Maps Loaded
           uiGmapGoogleMapApi.then(function(maps) {
             angular.forEach($scope.events, function($event,index){
@@ -153,7 +200,7 @@ angular.module('foodtrackwebApp')
               }
             })
           });
-        })
+        }
       }
 
   })

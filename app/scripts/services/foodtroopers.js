@@ -8,7 +8,7 @@
  * Factory in the foodtrackwebApp.
  */
 angular.module('foodtrackwebApp')
-  .factory('Foodtroopers', function ($http,$window,$timeout) {
+  .factory('Foodtroopers', function ($http,$window,$timeout,$q) {
     var Foodtroopers = (function(){
       var self = {}
       // Service logic
@@ -54,7 +54,8 @@ angular.module('foodtrackwebApp')
         getUserLocation: function (callback,onFail) {
           if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
-              callback,
+                callback
+              ,
               function(error){
                 self.Maps.navigatorGeoLocationException(error,function(){
                   $http.jsonp("http://ip-api.com/json/?callback=JSON_CALLBACK").success(function(data){
@@ -63,7 +64,8 @@ angular.module('foodtrackwebApp')
                 })
               }
             );
-          } else {
+          }
+          else {
             console.debug("Geo Location","Browser not supported this resource.")
           }
         },

@@ -56,6 +56,20 @@ angular
       });
   })
 
-  .run(function($rootScope,$state){
-    $rootScope.$state = $state    
+  .run(function($rootScope,$q,$state,Foodtroopers){
+    $rootScope.$state = $state
+
+    // get user position
+    $rootScope.location_defer = $q.defer() // to sync method
+    Foodtroopers.Maps.getUserLocation(function(position){
+      $rootScope.$position = position.coords
+      $rootScope.location_defer.resolve('done')
+      $rootScope.location_promise = $rootScope.location_defer.promise
+    },function(res){
+      var position = {latitude: res.lat, longitude: res.lon}
+      $rootScope.$position = position.coords
+      $rootScope.$city = res.city
+      $rootScope.location_defer.resolve('done')
+      $rootScope.location_promise = $rootScope.location_defer.promise
+    });
   });
