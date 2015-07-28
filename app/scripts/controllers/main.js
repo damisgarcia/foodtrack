@@ -11,6 +11,7 @@ angular.module('foodtrackwebApp')
   .controller('MainCtrl',
     function(
       $scope,
+      $rootScope,
       $window,
       $timeout,
       Instagram,
@@ -82,12 +83,11 @@ angular.module('foodtrackwebApp')
       getEvents($window.position)
     });
 
-
     // Iniciando Preloader
     Preloader.initializer("#ffffff",null,function() {
-      $scope.loaded = true
+      if($rootScope.$loaded == null || $rootScope.$loaded == undefined)
+        $rootScope.$loaded = true
     })
-
 
     // Resize Maps
     uiGmapIsReady.promise(1).then(function(instances) {
