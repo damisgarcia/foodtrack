@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="foodtrackwebApp">
+  <body ng-app="foodtrackwebApp" ng-class="{'overflow-hidden':!$loaded}">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -74,7 +74,11 @@
     </div>
     <div class="yield" ui-view autoscroll="true"></div>
 
-    <div class="footer">
+    <div class="footer"  ng-class="{
+                  'black': $state.is('index'),
+                  'indigo': $state.is('events'),
+                  'purple': $state.is('about')
+                }">
       <div class="container">
         <div class="row">
           <div class="col col-md-6">
