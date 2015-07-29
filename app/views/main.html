@@ -1,3 +1,15 @@
+<div class="black food-bg">
+  <div class="row">
+    <div class="col col-md-8 text-center flex">
+      <img src="images/foodtroopers.png" class="foodtrooper-logo">
+      <div class="food-titles">
+        <span class="droid-bold" style="font-size:9rem;color:white">food</span><br>
+        <span class="army-3d" style="font-size:8rem;color:white">troopers</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="animated text-center preloader-container" ng-hide="$loaded" ng-class="{fadeOut: $loaded}">
   <img src="images/loader-285.gif" width="32"/> <br>
   <p> <small>Aguarde enquanto carregamos o conteúdo.</small> </p>
@@ -51,7 +63,7 @@
       <ui-gmap-markers models="map.places" coords="'self'" doCluster="true" icon="'icon'" idKey="'idKey'"></ui-gmap-markers>
     </ui-gmap-google-map>
     <div class="event-map-promo animated" ng-class="{fadeOut:!isMapPromoVisible}" ng-show="isMapPromoVisible">
-      <h2 class="text-center">{{$city}}</h2>
+      <h2 class="text-center">{{city}}</h2>
     </div>
   </div>
 
@@ -75,6 +87,7 @@
     </div>
   </div>
 </div>
+<br>
 
 <!-- Thread Topics -->
 <div class="modal fade" id="treadingTopicsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

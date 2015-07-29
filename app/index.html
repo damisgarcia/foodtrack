@@ -48,17 +48,12 @@
       <div class="navbar" id="navigation"
           role="navigation"
            ng-class="{
-                        'navbar-inverse navbar-fixed-top animated slideInDown': $state.is('index'),
+                        'navbar-inverse animated slideInDown': $state.is('index'),
                         'navbar-default indigo animated slideInDown': $state.is('events'),
                         'navbar-default purple animated slideInDown': $state.is('about')
                       }">
         <div class="container">
           <div class="navbar-header">
-            <img src="images/foodtroopers.png" width="32" class="pull-left foodtrooper-logo" ng-show="$state.is('index')">
-            <a class="navbar-brand" href="#/" ng-show="$state.is('index')">
-              <span class="droid-bold" style="margin-right:-5px;">food</span>
-              <span class="army-3d">troopers</span>
-            </a>
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
