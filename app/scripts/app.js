@@ -47,7 +47,7 @@ angular
         v: '3.17',
         libraries: 'weather,geometry,visualization'
        });
-       
+
       //  autoscroll ui-view
       $provide.decorator('$uiViewScroll', function ($delegate) {
         return function (uiViewElement) {
@@ -67,7 +67,7 @@ angular
       $rootScope.location_promise = $rootScope.location_defer.promise
     },function(res){
       var position = {latitude: res.lat, longitude: res.lon}
-      $rootScope.$position = position.coords
+      $rootScope.$position = position
       $rootScope.$city = res.city
       $rootScope.location_defer.resolve('done')
       $rootScope.location_promise = $rootScope.location_defer.promise

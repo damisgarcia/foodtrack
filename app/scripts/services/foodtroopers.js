@@ -58,7 +58,7 @@ angular.module('foodtrackwebApp')
               ,
               function(error){
                 self.Maps.navigatorGeoLocationException(error,function(){
-                  $http.jsonp("http://ip-api.com/json/?callback=JSON_CALLBACK").success(function(data){
+                  $http.jsonp("http://ip-api.com/json/?callback=JSON_CALLBACK").success(function(data){                    
                     onFail(data)
                   })
                 })

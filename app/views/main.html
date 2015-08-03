@@ -42,7 +42,7 @@
       <h1>Trending Topics Foodtrooper.</h1>
       <p class="text-right">O que é destaque jamais fica esquecido no Cosmos </p>
       <button class="btn btn-large btn-success" ng-click="showTreadingTopicsModal()">
-        Clique aqui para ver o que está em Destaque na sua Região
+        Clique aqui para ver o que está em destaque na sua região
       </button>
     </div>
   </div>
@@ -87,8 +87,8 @@
                 </div>
                 <div class="col col-xs-9">
                   <h4>
-                    @{{post.user.username}} <br>
-                    <small>{{post.created_time | date:'short'}}</small>
+                    <a href="{{post.link}}" class="white-text" target="_blank">@{{post.user.username}}</a> <br>
+                    <small>{{ ( post.created_time * 1000 ) | date:'short'}}</small>
                   </h4>
                 </div>
               </div>

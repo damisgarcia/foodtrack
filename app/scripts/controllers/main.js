@@ -21,7 +21,7 @@ angular.module('foodtrackwebApp')
       uiGmapIsReady ) {
     // vars
     var limit = 8
-    $rootScope.$city = "Fortaleza"
+    $rootScope.$city = $rootScope.$city || "Fortaleza"
     $scope.posts = []
     $scope.isModalEnable = false
     $scope.isMapPromoVisible = true
@@ -66,17 +66,13 @@ angular.module('foodtrackwebApp')
     }
 
     try{
-      $scope.map.center = $rootScope.$position
       getTrucks($rootScope.$position)
       getEvents($rootScope.$position)
     }catch(e){
       $rootScope.location_defer.promise.then(function(resolve){
-        $scope.map.center = $rootScope.$position
         getTrucks($rootScope.$position)
         getEvents($rootScope.$position)
       })
-
-      console.log("Execeção")
     }
 
     // Iniciando Preloader
@@ -104,6 +100,7 @@ angular.module('foodtrackwebApp')
         Foodtroopers.Truck.getAll(null,position.latitude,position.longitude, function(json){
           $rootScope.$trucks = json
           $scope.trucks = $rootScope.$trucks
+          console.log($rootScope.$trucks)
           var minLikes = 20
           angular.forEach($scope.trucks,function(truck,index,_array){
             // Requisitando Postagem Instargram
@@ -121,7 +118,6 @@ angular.module('foodtrackwebApp')
               if(index == (_array.length - 1))
                 $scope.posts = shuffle($scope.posts)
                 $scope.$apply() //update view
-                console.log($scope.posts)
             })
           })
         });
@@ -144,7 +140,6 @@ angular.module('foodtrackwebApp')
             if(index == (_array.length - 1))
               $scope.posts = shuffle($scope.posts)
               $scope.$apply() //update view
-              console.log($scope.posts)
           })
         })
       }
@@ -156,6 +151,7 @@ angular.module('foodtrackwebApp')
           Foodtroopers.Events.getAll(null,position.latitude,position.longitude,function(json){
             $rootScope.$e = json
             $scope.events = $rootScope.$e
+            $scope.map.center = $rootScope.$e[0].geolocation || $rootScope.$position // center maps
             // Quando Google Maps Loaded
             uiGmapGoogleMapApi.then(function(maps) {
               angular.forEach($scope.events, function($event,index){
@@ -171,6 +167,7 @@ angular.module('foodtrackwebApp')
           })
         } else {
           $scope.events = $rootScope.$e
+          $scope.map.center = $rootScope.$e[0].geolocation || $rootScope.$position // center maps
           // Quando Google Maps Loaded
           uiGmapGoogleMapApi.then(function(maps) {
             angular.forEach($scope.events, function($event,index){
@@ -195,7 +192,7 @@ angular.module('foodtrackwebApp')
         var raw = element[0]
         element.bind("scroll", function() {
           if(raw.scrollTop + raw.offsetHeight >= raw.scrollHeight){
-            scope.limit++
+            scope.limit += 3
             if(!scope.$$phase)
               scope.$apply() //update view
           }
