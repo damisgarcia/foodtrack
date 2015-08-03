@@ -8,8 +8,13 @@
  * Controller of the foodtrackwebApp
  */
 angular.module('foodtrackwebApp')
-  .controller('EventsCtrl', function ($scope,$rootScope,$window,Foodtroopers,Preloader) {
-    Preloader.initializer("#fff59d",30,null)
+  .controller('EventsCtrl', function ($scope,$rootScope,Foodtroopers,Preloader) {
+
+    Preloader.initializer(null,30,function(){
+      if($rootScope.$loaded == null || $rootScope.$loaded == undefined)
+        $rootScope.$loaded = true
+    })
+
     try{
       getEvents($rootScope.$position)
     }catch(e){

@@ -1,6 +1,9 @@
 @import "vars.scss";
+.white{
+  background: #fff;
+}
 .black{
-  background: #222;
+  background: $black;
 }
 .red{
   background-color: $red;
@@ -18,6 +21,10 @@
   background-color: $carrot;
 }
 
+
+.white-text{
+  color: white;
+}
 
 .overflow-hidden{
   overflow: hidden;

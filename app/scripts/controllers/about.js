@@ -8,6 +8,9 @@
  * Controller of the foodtrackwebApp
  */
 angular.module('foodtrackwebApp')
-  .controller('AboutCtrl', function ($scope,Preloader) {
-    Preloader.initializer("#ffffff",30,null)
+  .controller('AboutCtrl', function ($scope,$rootScope,Preloader) {
+    Preloader.initializer(null,30,function(){
+      if($rootScope.$loaded == null || $rootScope.$loaded == undefined)
+        $rootScope.$loaded = true
+    })
   });

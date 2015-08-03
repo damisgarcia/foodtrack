@@ -47,7 +47,7 @@ angular
         v: '3.17',
         libraries: 'weather,geometry,visualization'
        });
-
+       
       //  autoscroll ui-view
       $provide.decorator('$uiViewScroll', function ($delegate) {
         return function (uiViewElement) {
@@ -56,7 +56,7 @@ angular
       });
   })
 
-  .run(function($rootScope,$q,$state,Foodtroopers){
+  .run(function($rootScope,$window,$q,$state,Foodtroopers){
     $rootScope.$state = $state
 
     // get user position
@@ -72,4 +72,5 @@ angular
       $rootScope.location_defer.resolve('done')
       $rootScope.location_promise = $rootScope.location_defer.promise
     });
+
   });

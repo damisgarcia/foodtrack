@@ -56,10 +56,83 @@ $red-darken: darken(red,30);
   padding: 0.2em 0;
 }
 
-body {
+body,html {
   font-family: 'Droid Sans', sans-serif;
+  background-color: #efefef;
   padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
 }
+
+.master{
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: stretch;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 100%;
+  .left{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: $leftbar;
+    color: #aaa;
+    height: inherit;
+    z-index: 20;
+    .logo-icon{
+      margin-top: 5rem;
+      max-width: 125px;
+      display: inline;
+    }
+    .logo-text{
+      font-size: 2.4rem;
+      margin:0 0 5rem 0;
+      > span{
+        display: block;
+        line-height: 1;
+        &:first-child{
+          color: lighten($yellow, 15);
+          font-size: 3rem;
+        }
+        &:last-child{
+          font-size: 2.8rem;
+          margin-left: 2.5rem;
+          color:$yellow;
+        }
+      }
+    }
+    .nav{
+      flex: 1;
+      width: 100%;
+      margin-left: 5rem;
+      li{
+        border-left: 1px solid transparentize(white,0.9);
+        a{
+          color: white;
+          &:hover{
+            background-color: transparent !important;
+          }
+        }
+        &.active a{
+          background-color: transparent !important;
+        }
+
+        &.active{
+          border-left: 1px solid #fff;
+        }
+      }
+    }
+  }
+  .right{
+    width: 100%;
+    margin-left: 210px;
+  }
+}
+
 .row{
   position: relative;
   margin: 0px;
@@ -90,31 +163,16 @@ time{
   padding-right: 15px;
 }
 
-// Logo Mark
-.foodtrooper-logo{
-  width: 210px;
-  height: 210px;
-  display: inline;
-  margin: 15px 8px;
-  padding: 1em 2em;
+.contact-us{
+  width: 100%;
+  padding: 0 3rem;
 }
 
-.food-bg{
-  background: url(../images/foodbg.png) #222;
+.footer-pre{
+  background: url(../images/foodbg.png) $white;
   background-position: left center;
-  .flex{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .food-titles{
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    line-height: 0.75;
-  }
+  width: 100%;
+  min-height: 180px;
 }
 
 /* Custom page header */
@@ -168,8 +226,22 @@ time{
 
 /* Custom page footer */
 .footer {
-  padding-top: 19px;
+  background-color: #111;
   color: white;
+  a{
+    color: transparentize($white,0.3);
+    &:hover{
+      color: transparentize($white,0.1);
+    }
+  }
+}
+
+.footer p{
+  padding: 1rem 0;
+}
+
+.footer ul{
+  margin: 2rem auto;
 }
 
 .container-narrow > hr {
@@ -223,6 +295,9 @@ time{
   margin: auto;
   max-height: 360px;
   background-color: black;
+  .col{
+    line-height: 1.25;
+  }
 
   blockquote{
     color:white;
@@ -230,8 +305,12 @@ time{
     border:none;
     text-shadow: 1px 1px 1px black;
     font-weight: bold;
+    h2{
+      font-size: 6rem;
+      color: $yellow;
+      text-shadow:1px 1px 12px black;
+    }
     footer{
-      text-align: center;
       font-size: 12pt;
       color:#ffecb3;
     }
@@ -272,7 +351,6 @@ time{
     position:absolute;
     width: 100%;
     bottom:0;
-    img:first-child{ margin-right: -30px; }
   }
 
   .video-container{
@@ -327,12 +405,7 @@ time{
     }
   }
 }
-.last-posts{
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  background-color: black;
-  flex-wrap: nowrap;
+.last-posts{  
   overflow: inherit;
   max-height:480px;
   margin:0px;
@@ -492,13 +565,15 @@ time{
   width: 100%;
   height: 100%;
   min-height: 480px;
+  left: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  background:$white no-repeat;
   padding-top: 5rem;
-  z-index: 999;
-  background-color: white;
+  margin-left: 110px;
+  z-index: 10;
   img{
     margin: 15px;
   }
@@ -541,8 +616,7 @@ time{
 }
 
 #events, #about{
-  background-color: #efefef;
-  padding-top: 3em;
+  padding-top: 1em;
 }
 
 // Promos

@@ -43,54 +43,57 @@
        }(document, 'script', 'facebook-jssdk'));
     </script>
 
-    <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar" id="navigation"
-          role="navigation"
-           ng-class="{
-                        'navbar-inverse animated slideInDown': $state.is('index'),
-                        'navbar-default indigo animated slideInDown': $state.is('events'),
-                        'navbar-default purple animated slideInDown': $state.is('about')
-                      }">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
+    <div class="master">
+      <div class="left black">
+        <a href ui-sref="index">
+          <img src="images/foodtroopers.png" class="logo-icon">
+        </a>
+        <h2 class="logo-text">
+          <span class="droid-bold white-text">food</span>
+          <span class="army-3d white-text">troopers</span>
+        </h2>
 
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-              <li ui-sref-active="active"><a href ui-sref="index">Home</a></li>
-              <li ui-sref-active="active"><a href ui-sref="events">Events</a></li>
-              <li ui-sref-active="active"><a href ui-sref="about">About</a></li>
-            </ul>
+        <!-- Navigation -->
+        <ul class="nav">
+          <li ui-sref-active="active"><a href ui-sref="index">Início</a></li>
+          <li ui-sref-active="active"><a href ui-sref="events">Eventos</a></li>
+          <li ui-sref-active="active"><a href ui-sref="about">Sobre</a></li>
+        </ul>
+        <p class="contact-us">
+          Fale Conosco <br>
+          <small class="white-text">foodtroopers@gmail.com</small>
+        </p>
+      </div>
+
+      <div class="right">
+        <div class="yield" ui-view autoscroll="true"></div>
+
+        <social-midia-promo ng-show="$state.is('index')"></social-midia-promo>
+
+        <div class="footer">
+          <div class="footer-pre">
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col col-xs-6">
+                <ul class="list-inline">
+                  <li>
+                    <a href="https://www.facebook.com/foodtroopersapp">Facebook</a>
+                  </li>
+                  <li>
+                    <a href="https://instagram.com/foodtroopers/">Instagram</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col col-xs-6">
+                <p> Copyright &copy 2015 Foodtroopers Team. <br> Todos os direitos reservados.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="yield" ui-view autoscroll="true"></div>
-
-    <div class="footer"  ng-class="{
-                  'black': $state.is('index'),
-                  'indigo': $state.is('events'),
-                  'purple': $state.is('about')
-                }">
-      <div class="container">
-        <div class="row">
-          <div class="col col-md-6">
-            <p> Copyright &copy 2015 Foodtroopers Team. Todos os direitos reservados.</p>
-          </div>
-          <div class="col col-md-6">
-            <p class="pull-right">Entre em contato <br> <b>foodtroopers@gmail.com</b></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
+  </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -102,7 +105,6 @@
        ga('create', 'UA-XXXXX-X');
        ga('send', 'pageview');
     </script>
-
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -116,6 +118,7 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-i18n/angular-locale_pt-br.js"></script>
     <script src="bower_components/videojs/dist/video-js/video.js"></script>
     <script src="bower_components/ngprogress/build/ngProgress.js"></script>
     <script src="bower_components/lodash/lodash.js"></script>
@@ -132,6 +135,10 @@
         <script src="scripts/services/preloader.js"></script>
         <script src="scripts/services/instagram.js"></script>
         <script src="scripts/controllers/events.js"></script>
+        <script src="scripts/directives/social-midia-promo.js"></script>
         <!-- endbuild -->
+
+        <!-- Instagram API -->
+        <script>(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src="//x.instagramfollowbutton.com/follow.js";s.parentNode.insertBefore(g,s);}(document,"script"));</script>
 </body>
 </html>

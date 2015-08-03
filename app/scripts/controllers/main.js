@@ -19,16 +19,13 @@ angular.module('foodtrackwebApp')
       Preloader,
       uiGmapGoogleMapApi,
       uiGmapIsReady ) {
+    // vars
+    var limit = 8
     $rootScope.$city = "Fortaleza"
-    $scope.posts = {
-      grids:[
-        { objects:[], likes:0 },{objects:[], likes:0},{ objects:[], likes:0 }
-      ]
-    }
-
+    $scope.posts = []
     $scope.isModalEnable = false
     $scope.isMapPromoVisible = true
-    $scope.limit = 2
+    $scope.limit = limit
 
     // Filters
     $scope.EventIsConfirmed = function(item){
@@ -52,7 +49,7 @@ angular.module('foodtrackwebApp')
 
     $scope.showTreadingTopicsModal = function(){
       $scope.isModalEnable = true
-      $scope.limit = 2
+      $scope.limit = limit
       $('#treadingTopicsModal').modal({keyboard:false})
 
       if(!$scope.$$phase) {
@@ -83,7 +80,7 @@ angular.module('foodtrackwebApp')
     }
 
     // Iniciando Preloader
-    Preloader.initializer("#ffffff",null,function() {
+    Preloader.initializer(null,null,function() {
       if($rootScope.$loaded == null || $rootScope.$loaded == undefined)
         $rootScope.$loaded = true
     })
@@ -107,7 +104,6 @@ angular.module('foodtrackwebApp')
         Foodtroopers.Truck.getAll(null,position.latitude,position.longitude, function(json){
           $rootScope.$trucks = json
           $scope.trucks = $rootScope.$trucks
-          var count = 0
           var minLikes = 20
           angular.forEach($scope.trucks,function(truck,index,_array){
             // Requisitando Postagem Instargram
@@ -115,8 +111,7 @@ angular.module('foodtrackwebApp')
               angular.forEach(result.data,function(media,index){
                 try{
                   if(media.likes.count > minLikes){
-                    $scope.posts.grids[count].objects.push(media)
-                    count == 2 ? count = 0 : count++
+                    $scope.posts.push(media)
                   }
                 } catch(e){
                   // none
@@ -124,20 +119,14 @@ angular.module('foodtrackwebApp')
               })
 
               if(index == (_array.length - 1))
-                angular.forEach($scope.posts.grids,function(grid,index){
-                  $scope.posts.grids[index].objects = shuffle(grid.objects)
-                })
-
+                $scope.posts = shuffle($scope.posts)
+                $scope.$apply() //update view
+                console.log($scope.posts)
             })
-
-            if(!$scope.$$phase){
-              $scope.$apply() //update view
-            }
           })
         });
       } else {
         $scope.trucks = $rootScope.$trucks
-        var count = 0
         var minLikes = 20
         angular.forEach($scope.trucks,function(truck,index,_array){
           // Requisitando Postagem Instargram
@@ -145,8 +134,7 @@ angular.module('foodtrackwebApp')
             angular.forEach(result.data,function(media,index){
               try{
                 if(media.likes.count > minLikes){
-                  $scope.posts.grids[count].objects.push(media)
-                  count == 2 ? count = 0 : count++
+                  $scope.posts.push(media)
                 }
               } catch(e){
                 // none
@@ -154,15 +142,10 @@ angular.module('foodtrackwebApp')
             })
 
             if(index == (_array.length - 1))
-              angular.forEach($scope.posts.grids,function(grid,index){
-                $scope.posts.grids[index].objects = shuffle(grid.objects)
-              })
-
+              $scope.posts = shuffle($scope.posts)
+              $scope.$apply() //update view
+              console.log($scope.posts)
           })
-
-          if(!$scope.$$phase){
-            $scope.$apply() //update view
-          }
         })
       }
     }
