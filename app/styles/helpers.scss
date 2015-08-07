@@ -29,3 +29,9 @@
 .overflow-hidden{
   overflow: hidden;
 }
+
+
+// Filters
+.desaturate{
+  filter: grayscale(1);
+}

@@ -173,6 +173,17 @@ time{
   background-position: left center;
   width: 100%;
   min-height: 180px;
+  color:$black;
+  .plataforms-promo{
+    margin-top: 5rem;
+    .em-breve{
+      font-size: 6pt;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-bottom: -28px;
+      margin-right: 40px;
+    }
+  }
 }
 
 /* Custom page header */
@@ -405,7 +416,7 @@ time{
     }
   }
 }
-.last-posts{  
+.last-posts{
   overflow: inherit;
   max-height:480px;
   margin:0px;
