@@ -45,7 +45,7 @@ angular
       uiGmapGoogleMapApiProvider.configure({
         key: 'AIzaSyDL-Z0L2jI0A6QbqeYVV9FTXCbe5vrr1k8',
         v: '3.17',
-        libraries: 'weather,geometry,visualization'
+        libraries: 'weather,geometry,visualization',
        });
 
       //  autoscroll ui-view
@@ -60,17 +60,18 @@ angular
     $rootScope.$state = $state
 
     // get user position
-    $rootScope.location_defer = $q.defer() // to sync method
-    Foodtroopers.Maps.getUserLocation(function(position){
-      $rootScope.$position = position.coords
-      $rootScope.location_defer.resolve('done')
-      $rootScope.location_promise = $rootScope.location_defer.promise
-    },function(res){
-      var position = {latitude: res.lat, longitude: res.lon}
-      $rootScope.$position = position
-      $rootScope.$city = res.city
-      $rootScope.location_defer.resolve('done')
-      $rootScope.location_promise = $rootScope.location_defer.promise
-    });
+    $rootScope.$position = {latitude:'-3.7379754',longitude:'-38.5387834,15'}
+    // $rootScope.location_defer = $q.defer() // to sync method
+    // Foodtroopers.Maps.getUserLocation(function(position){
+    //   $rootScope.$position = position.coords
+    //   $rootScope.location_defer.resolve('done')
+    //   $rootScope.location_promise = $rootScope.location_defer.promise
+    // },function(res){
+    //   var position = {latitude: res.lat, longitude: res.lon}
+    //   $rootScope.$position = position
+    //   $rootScope.$city = res.city
+    //   $rootScope.location_defer.resolve('done')
+    //   $rootScope.location_promise = $rootScope.location_defer.promise
+    // });
 
   });

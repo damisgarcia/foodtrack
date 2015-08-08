@@ -65,15 +65,10 @@ angular.module('foodtrackwebApp')
       $scope.isMapPromoVisible = false
     }
 
-    try{
-      getTrucks($rootScope.$position)
-      getEvents($rootScope.$position)
-    }catch(e){
-      $rootScope.location_defer.promise.then(function(resolve){
-        getTrucks($rootScope.$position)
-        getEvents($rootScope.$position)
-      })
-    }
+
+    getTrucks($rootScope.$position)
+    getEvents($rootScope.$position)
+  
 
     // Iniciando Preloader
     Preloader.initializer(null,null,function() {
