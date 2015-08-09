@@ -44,7 +44,7 @@
     </script>
 
     <div class="master">
-      <div class="left black">
+      <div class="left black hidden-xs">
         <a href ui-sref="index">
           <img src="images/foodtroopers.png" class="logo-icon">
         </a>
@@ -64,6 +64,27 @@
           <small class="white-text">foodtroopers@gmail.com</small>
         </p>
       </div>
+      <!-- Navigation for small devices -->
+      <nav class="navbar navbar-small-device navbar-inverse navbar-fixed-top hidden-md hidden-lg hidden-sm">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header col-xs-5">
+            <a class="navbar-brand" href="#">
+              <img src="images/foodtroopers.png" width="28">
+              <span class="droid-bold">foodtroopers</span>
+            </a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="col-xs-7">
+            <ul class="list-inline pull-right">
+              <li ui-sref-active="active" class="navbar-text"><a href ui-sref="index">Início</a></li>
+              <li ui-sref-active="active" class="navbar-text"><a href ui-sref="events">Food Parks</a></li>
+              <li ui-sref-active="active" class="navbar-text"><a href ui-sref="about">Sobre</a></li>
+            </ul>
+        </div>
+        </div><!-- /.container -->
+      </nav><!-- /.navbar -->
 
       <div class="right">
         <div class="yield" ui-view autoscroll="true"></div>
@@ -72,10 +93,14 @@
 
         <div class="footer">
           <div class="footer-pre">
-            <div class="col col-xs-6 col-xs-offset-6 plataforms-promo text-right">
+            <div class="col col-md-6 col-md-offset-6 col-xs-12 plataforms-promo text-right">
               <p class="em-breve">Disponível em Breve</p>
-              <img src="images/app-store-icon.png" class="desaturate" width="200">
-              <img src="images/google-play-icon.png" class="desaturate" width="200">
+              <div class="col col-xs-6">
+                <img src="images/app-store-icon.png" class="desaturate img-reponsive">
+              </div>
+              <div class="col col-xs-6">
+                <img src="images/google-play-icon.png" class="desaturate img-reponsive">
+              </div>
             </div>
           </div>
           <div class="container">

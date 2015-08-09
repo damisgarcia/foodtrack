@@ -186,55 +186,6 @@ time{
   }
 }
 
-/* Custom page header */
-.header {
-  .navbar{
-    margin-bottom:0px;
-    border-radius:0px;
-  }
-  // Logo Font
-  .navbar .navbar-brand{
-    font-size: 18pt;
-  }
-
-  .navbar-inverse .navbar-brand{
-    color:white;
-  }
-
-  .navbar-default {
-    border: none;
-    .navbar-brand{
-      color:white;
-    }
-    .navbar-header{
-      background-color: darken($red,10);
-      color:white;
-    }
-    .navbar-nav{
-      li{
-        a{
-          color: transparentize(white,0.5);
-        }
-        &.active{
-          background-color: transparent !important;
-          a{
-            background-color:transparent !important;
-            color: white;
-          }
-        }
-      }
-    }
-  }
-
-  /* Make the masthead heading the same height as the navigation */
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
-  }
-}
-
 /* Custom page footer */
 .footer {
   background-color: #111;
@@ -312,7 +263,7 @@ time{
 
   blockquote{
     color:white;
-    font-size: 25pt;
+    font-size: 3.5rem;
     border:none;
     text-shadow: 1px 1px 1px black;
     font-weight: bold;
@@ -511,7 +462,11 @@ time{
 
 #treadingTopicsModal{
   .modal{
+    top: 0;
+    left: 0;
     overflow: hidden;
+    width: 100%;
+    height: 100%;
     &.animated{
       -webkit-transition-duration: 0.2s;
       transition-duration: 0.2s;
@@ -519,6 +474,7 @@ time{
   }
   .modal-dialog{
     width:95% !important;
+    height: 100% !important;
     overflow: hidden;
     margin: 0 auto;
     .modal-content{
@@ -598,7 +554,7 @@ time{
   position: relative;
   .event-map-promo{
     position: absolute;
-    top:3.5em;
+    top:4.5em;
     left: 0;
     right: 0;
     width: 95%;
@@ -611,6 +567,11 @@ time{
     h2{
       font-size: 48pt;
       margin: auto 2.5em;
+      cursor: default;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
     h4{
       color:#fff9c4;
@@ -644,4 +605,62 @@ time{
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+// Tablets e Mobiles
+@media screen and (min-width:240px) and (max-width:768px) {
+  .master{
+    /* Custom page header */
+    .navbar-small-device {
+      // Logo Font
+      .navbar-brand{
+        padding: 0px;
+        line-height: 50px;
+        font-size: 80%;
+        img{
+          display: inline;
+        }
+      }
+
+      ul{
+        margin: 0;
+        font-size: 75%;
+        a{
+          color: white;
+        }
+        li{
+          &.active{
+            color:$yellow;
+            background-color: black;
+            border:0px solid $black;
+            border-radius: 0.3rem;
+          }
+        }
+      }
+
+      .navbar-inverse .navbar-brand{
+        color:white;
+      }
+    }
+
+    .right{
+      margin-left: 0 !important;
+    }
+  }
+
+  .video-wrap{
+    margin-top: 50px;
+    max-height: 240px;
+    blockquote{
+      color:white;
+      font-size: 2.5rem;
+    }
+  }
+
+  .last-posts-filter h1{
+    text-align: center;
+  }
+
+  // Google Maps
+  .angular-google-map-container { height: 320px; }
 }

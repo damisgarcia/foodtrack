@@ -8,7 +8,7 @@
           <footer>Feito por geeks para o público que vivencia a cultura urbana. <br> <cite title="Source Title">Trooper Team</cite></footer>
         </blockquote>
       </div>
-    </div>    
+    </div>
   </div>
   <div class="video-container">
     <video width="1380" height="720" autoplay loop="true" muted="true">
@@ -27,7 +27,7 @@
 <div>
   <div class="last-posts-wrap">
     <div class="row last-posts">
-      <div class="col col-md-4 animated fadeIn" ng-repeat="post in posts | limitTo:6">
+      <div class="col col-md-4 col-sm-6 col-xs-4 animated fadeIn" ng-repeat="post in posts | limitTo:6">
         <div class="col col-md-12">
           <img src="{{post.images.low_resolution.url}}" class="img-responsive"/>
         </div>
@@ -53,7 +53,7 @@
   </div>
   <div class="white">
     <div class="container">
-      <h2>Acompanhe Nossas Redes Sociais</h2>
+      <h2 class="text-center">Acompanhe Nossas Redes Sociais</h2>
       <hr>
     </div>
   </div>
@@ -73,7 +73,7 @@
       </div>
       <div class="modal-body">
         <div class="row last-posts" on-scroll>
-          <div class="col col-md-4 animated fadeIn" ng-repeat="post in posts | limitTo: limit">
+          <div class="col col-md-4 col-sm-2 col-xs-12 animated fadeIn" ng-repeat="post in posts | limitTo: limit">
             <img src="{{post.images.standard_resolution.url}}" class="img-responsive"/>
             <div class="content">
               <span class="divider"></span>
