@@ -89,19 +89,23 @@
       <div class="right">
         <div class="yield" ui-view autoscroll="true"></div>
 
+        <div class="row white" ng-show="$state.is('index')">
+          <div class="col col-xs-12">
+            <h2 class="text-center">Lançamento em Breve Android e IOS</h2>
+            <hr class="container">
+          </div>
+          <div class="col col-xs-12">
+            <img src="http://www.asquarestudio.com/static/img/about/mobile-icon.png" class="img-reponsive center-block">
+            <br>
+          </div>
+        </div>
+
         <social-midia-promo ng-show="$state.is('index')"></social-midia-promo>
+
 
         <div class="footer">
           <div class="footer-pre">
-            <div class="col col-md-6 col-md-offset-6 col-xs-12 plataforms-promo text-right">
-              <p class="em-breve">Disponível em Breve</p>
-              <div class="col col-xs-6">
-                <img src="images/app-store-icon.png" class="desaturate img-reponsive">
-              </div>
-              <div class="col col-xs-6">
-                <img src="images/google-play-icon.png" class="desaturate img-reponsive">
-              </div>
-            </div>
+            <!-- none -->
           </div>
           <div class="container">
             <div class="row">

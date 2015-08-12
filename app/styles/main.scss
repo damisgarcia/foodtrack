@@ -155,14 +155,6 @@ time{
   color: transparentize(black, 0.5);
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
 .contact-us{
   width: 100%;
   padding: 0 3rem;
@@ -659,6 +651,10 @@ time{
 
   .last-posts-filter h1{
     text-align: center;
+  }
+
+  #events,#about{
+    margin-top: 50px;
   }
 
   // Google Maps
