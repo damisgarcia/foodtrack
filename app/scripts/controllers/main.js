@@ -39,10 +39,8 @@ angular.module('foodtrackwebApp')
       navigationControl: false,
       mapTypeControl: false,
       scaleControl: false,
-      draggable: true,
-      mapTypeControl: true,
-      panControl: false,
-      mapTypeControl: false
+      draggable: true,      
+      panControl: false
     }
 
     $scope.map = { zoom: 14, places:[], options: gmaps_options }
@@ -65,10 +63,21 @@ angular.module('foodtrackwebApp')
       $scope.isMapPromoVisible = false
     }
 
+    $scope.showInfoMarker = function (index,marker) {
+      var ev = $scope.events[index]
+
+      var htmlbuild = '<h2>'+ev.name+'</h1>\
+                      <p>'+ev.description+'</p>'
+
+      Foodtroopers.infoWindow.setContent(htmlbuild)
+      Foodtroopers.infoWindow.setPosition({lat:ev.geolocation.latitude,lng:ev.geolocation.longitude})
+      Foodtroopers.infoWindow.open($scope.maps[0].map,marker)
+    }
+
 
     getTrucks($rootScope.$position)
     getEvents($rootScope.$position)
-  
+
 
     // Iniciando Preloader
     Preloader.initializer(null,null,function() {
@@ -79,6 +88,8 @@ angular.module('foodtrackwebApp')
     // Resize Maps
     uiGmapIsReady.promise(1).then(function(instances) {
       $scope.maps = instances
+      // Instanciando Balões
+      Foodtroopers.infoWindow = new google.maps.InfoWindow({ content: ''})
     });
 
     // private
@@ -154,7 +165,8 @@ angular.module('foodtrackwebApp')
                   $scope.map.places.push({
                     idKey:index,
                     latitude:$event.geolocation.latitude,
-                    longitude:$event.geolocation.longitude
+                    longitude:$event.geolocation.longitude,
+                    title: $event.name
                   })
                 }
               })
@@ -165,12 +177,15 @@ angular.module('foodtrackwebApp')
           $scope.map.center = $rootScope.$e[0].geolocation || $rootScope.$position // center maps
           // Quando Google Maps Loaded
           uiGmapGoogleMapApi.then(function(maps) {
+            // Instanciando Balões
+            Foodtroopers.infoWindow = new google.maps.InfoWindow({ content: '' })
+
             angular.forEach($scope.events, function($event,index){
               if($event.geolocation != null){
                 $scope.map.places.push({
                   idKey:index,
                   latitude:$event.geolocation.latitude,
-                  longitude:$event.geolocation.longitude
+                  longitude:$event.geolocation.longitude,
                 })
               }
             })
