@@ -49,7 +49,7 @@
         <h5>
           {{map.window.title}} <br>
           <small>{{map.window.$event.schedule}}</small> <br>
-          <small>{{map.window.$event.start_date}} - {{map.window.$event.end_date}}</small>
+          <small>{{map.window.$event.start_date | date:'shortDate'}} - {{map.window.$event.end_date | date:'shortDate'}}</small>
         </h5>
       </ui-gmap-window>
       <ui-gmap-markers models="map.places" coords="'self'" doCluster="true" icon="'icon'" idKey="'idKey'" events="map.markerEvents"></ui-gmap-markers>
