@@ -121,6 +121,7 @@ angular.module('foodtrackwebApp')
               angular.forEach(result.data,function(media,index){
                 try{
                   if(media.likes.count > minLikes){
+                    media.created_time = media.created_time * 1000
                     $scope.posts.push(media)
                   }
                 } catch(e){
@@ -143,6 +144,7 @@ angular.module('foodtrackwebApp')
             angular.forEach(result.data,function(media,index){
               try{
                 if(media.likes.count > minLikes){
+                  media.created_time = media.created_time * 1000
                   $scope.posts.push(media)
                 }
               } catch(e){
