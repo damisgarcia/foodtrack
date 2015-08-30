@@ -18,9 +18,9 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ui.router',
+    'uiGmapgoogle-maps',
     'ngProgress',
-    'uiGmapgoogle-maps'
+    'ui.router' 
   ])
   .config(function ($stateProvider,$urlRouterProvider,$provide,uiGmapGoogleMapApiProvider) {
     $urlRouterProvider.otherwise('/');
@@ -67,7 +67,7 @@ angular
     //   $rootScope.location_defer.resolve('done')
     //   $rootScope.location_promise = $rootScope.location_defer.promise
     // },function(res){
-    //   var position = {latitude: res.lat, longitude: res.lon}
+    //   var position =w {latitude: res.lat, longitude: res.lon}
     //   $rootScope.$position = position
     //   $rootScope.$city = res.city
     //   $rootScope.location_defer.resolve('done')

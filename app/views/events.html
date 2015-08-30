@@ -1,25 +1,22 @@
-<div id="events" class="row">
-  <div class="col col-md-4 col-sm-6 col-xs-12 animated fadeIn" ng-repeat="ev in events">
-    <div class="row">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="row">
-            <img src="{{ev.photo}}" class="img-responsive">
-          </div>
-          <h4>
-            <b>{{ev.name}}</b>
-            <br>
-            <small> Início {{ev.start_date | date:'shortDate'}} irá terminar {{ev.end_date | date:'shortDate'}}</time> </small>
-          </h4>
-          <p>{{ev.description}}</p>
-          <p>{{ev.address}}</p>
-          <p ng-if="ev.schedule">Horário: {{ev.schedule}}</p>
+<div class="row" id="events">
+  <div class="item col-md-4 col-sm-6 col-xs-12" ng-repeat="ev in events">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="row media" style="background-image:url({{ev.photo}});">
         </div>
-        <div class="panel-footer">
-          <div class="row">
-            <div class="col col-xs-12 text-right">
-              <img class="img-circle" ng-repeat="truck in ev.trucks | filter: EventIsConfirmed | limitTo: 8" src="{{truck.social_media.instagram.profile_picture}}" title="{{truck.name}}" width="32"/>
-            </div>
+        <h4>
+          <b>{{ev.name}}</b>
+          <br>
+          <small> Início {{ev.start_date | date:'shortDate'}} irá terminar {{ev.end_date | date:'shortDate'}}</time> </small>
+        </h4>
+        <p>{{ev.description}}</p>
+        <p>{{ev.address}}</p>
+        <p ng-if="ev.schedule">Horário: {{ev.schedule}}</p>
+      </div>
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col col-xs-12 text-right">
+            <img class="img-circle" ng-repeat="truck in ev.trucks | filter: EventIsConfirmed | limitTo: 8" src="{{truck.social_media.instagram.profile_picture}}" title="{{truck.name}}" width="32"/>
           </div>
         </div>
       </div>

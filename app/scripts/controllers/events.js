@@ -13,6 +13,13 @@ angular.module('foodtrackwebApp')
     Preloader.initializer(null,30,function(){
       if($rootScope.$loaded == null || $rootScope.$loaded == undefined)
         $rootScope.$loaded = true
+
+        $('#events').isotope({
+          itemSelector: '.item',
+          masonry: {
+            columnWidth: '.item'
+          }
+        });
     })
 
     try{
