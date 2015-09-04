@@ -24,7 +24,8 @@ angular.module('foodtrackwebApp')
 
     try{
       getEvents($rootScope.$position)
-    }catch(e){
+    }
+    catch(e){
       $rootScope.location_defer.promise.then(function(resolve){
         getEvents($rootScope.$position)
       })
