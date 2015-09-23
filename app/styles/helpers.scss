@@ -21,6 +21,11 @@
   background-color: $carrot;
 }
 
+.bg-inverse{
+  background-color: transparentize($black,0.1);
+  color: $yellow;
+}
+
 
 .white-text{
   color: white;

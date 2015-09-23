@@ -9,15 +9,14 @@
  */
 angular.module('foodtrackwebApp')
   .controller('EventsCtrl', function ($scope,$rootScope,Foodtroopers,Preloader) {
-
     Preloader.initializer(null,30,function(){
       if($rootScope.$loaded == null || $rootScope.$loaded == undefined)
         $rootScope.$loaded = true
-
-        $('#events').isotope({
+        $('.grid').isotope({
           itemSelector: '.item',
+          percentPosition: true,
           masonry: {
-            columnWidth: '.item'
+            columnWidth: '.item-sizer'
           }
         });
     })
@@ -36,7 +35,7 @@ angular.module('foodtrackwebApp')
       // GET EVENTS by Locations
       if($rootScope.$e == null || $rootScope.$e == undefined){
         Foodtroopers.Events.getAll(null,position.latitude,position.longitude,function(json){
-          $scope.events = json
+          $scope.events = json          
         })
       } else {
         $scope.events = $rootScope.$e

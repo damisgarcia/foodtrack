@@ -20,7 +20,7 @@ angular
     'ngTouch',
     'uiGmapgoogle-maps',
     'ngProgress',
-    'ui.router' 
+    'ui.router'
   ])
   .config(function ($stateProvider,$urlRouterProvider,$provide,uiGmapGoogleMapApiProvider) {
     $urlRouterProvider.otherwise('/');
