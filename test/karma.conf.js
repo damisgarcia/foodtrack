@@ -35,6 +35,7 @@ module.exports = function(config) {
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-touch/angular-touch.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
+<<<<<<< HEAD
       'bower_components/bootstrap/dist/js/bootstrap.js',
       'bower_components/get-style-property/get-style-property.js',
       'bower_components/get-size/get-size.js',
@@ -49,6 +50,8 @@ module.exports = function(config) {
       'bower_components/moment/moment.js',
       'bower_components/ngprogress/build/ngProgress.js',
       'bower_components/videojs/dist/video-js/video.js',
+=======
+>>>>>>> c150ab75321c4b8f8ff874777a130ff2ce9a3b52
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",
